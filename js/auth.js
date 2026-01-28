@@ -2,14 +2,14 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   GoogleAuthProvider,
-  signInWithPopup,
+  signInWithPopup
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
 import {
   doc,
   setDoc,
   getDoc,
-  serverTimestamp,
+  serverTimestamp
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 function showError(message) {
@@ -22,7 +22,7 @@ function clearError() {
   if (errorDiv) errorDiv.textContent = "";
 }
 
-// SIGN UP
+// --------- SIGNUP ---------
 window.signup = async function () {
   clearError();
 
@@ -55,40 +55,38 @@ window.signup = async function () {
   const role = roleInput.value;
 
   try {
-    const userCredential = await createUserWithEmailAndPassword(
-      auth,
-      email,
-      password,
-    );
+    // Create Firebase Auth user
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
 
+    // Create Firestore user document
     await setDoc(doc(db, "users", user.uid), {
       name,
       email,
       role,
-      createdAt: serverTimestamp(),
+      createdAt: serverTimestamp()
     });
 
+    // If restaurant, create restaurant document
     if (role === "restaurant") {
       await setDoc(doc(db, "restaurants", user.uid), {
         name: name + "'s Restaurant",
         ownerId: user.uid,
         cuisine: "Not set",
         isOnline: true,
-        createdAt: serverTimestamp(),
+        createdAt: serverTimestamp()
       });
-
-      window.location.href = "restaurant-dashboard.html";
     }
 
-    window.location.href =
-      role === "customer" ? "home.html" : "restaurant-dashboard.html";
+    // Redirect by role
+    redirectByRole(role);
+
   } catch (error) {
     showError(error.message);
   }
 };
 
-// LOGIN
+// --------- LOGIN ---------
 window.login = async function () {
   clearError();
 
@@ -101,29 +99,24 @@ window.login = async function () {
   }
 
   try {
-    const userCredential = await signInWithEmailAndPassword(
-      auth,
-      email,
-      password,
-    );
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
 
     const userSnap = await getDoc(doc(db, "users", user.uid));
-
     if (!userSnap.exists()) {
       showError("User record not found.");
       return;
     }
 
     const role = userSnap.data().role;
-    window.location.href =
-      role === "customer" ? "home.html" : "restaurant-dashboard.html";
+    redirectByRole(role);
+
   } catch (error) {
     showError("Invalid email or password.");
   }
 };
 
-// GOOGLE LOGIN
+// --------- GOOGLE LOGIN ---------
 window.googleLogin = async function () {
   clearError();
   const provider = new GoogleAuthProvider();
@@ -134,32 +127,41 @@ window.googleLogin = async function () {
 
     const userRef = doc(db, "users", user.uid);
     const snap = await getDoc(userRef);
-    if (role === "restaurant") {
-      await setDoc(doc(db, "restaurants", user.uid), {
-        name: name + "'s Restaurant",
-        ownerId: user.uid,
-        cuisine: "Not set",
-        isOnline: true,
-        createdAt: serverTimestamp(),
-      });
-
-      window.location.href = "restaurant-dashboard.html";
-    }
 
     if (!snap.exists()) {
+      // First-time Google login → create Firestore user
+      const role = "customer"; // Default role for Google signup
       await setDoc(userRef, {
         name: user.displayName,
         email: user.email,
-        role: "customer",
-        createdAt: serverTimestamp(),
+        role,
+        createdAt: serverTimestamp()
       });
-      window.location.href = "home.html";
+
+      redirectByRole(role);
     } else {
       const role = snap.data().role;
-      window.location.href =
-        role === "customer" ? "home.html" : "restaurant-dashboard.html";
+      redirectByRole(role);
     }
   } catch (error) {
+    console.error(error);
     showError("Google sign-in failed.");
   }
 };
+
+// --------- ROLE REDIRECT ---------
+function redirectByRole(role) {
+  switch (role) {
+    case "customer":
+      window.location.href = "home.html";
+      break;
+    case "restaurant":
+      window.location.href = "restaurant-dashboard.html";
+      break;
+    case "admin":
+      window.location.href = "admin.html";
+      break;
+    default:
+      alert("Unknown role");
+  }
+}
