@@ -12,6 +12,9 @@ import {
   serverTimestamp
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
+// -------------------------
+// Error helpers
+// -------------------------
 function showError(message) {
   const errorDiv = document.getElementById("error");
   if (errorDiv) errorDiv.textContent = message;
@@ -22,7 +25,28 @@ function clearError() {
   if (errorDiv) errorDiv.textContent = "";
 }
 
-// --------- SIGNUP ---------
+// -------------------------
+// Role redirect function
+// -------------------------
+function redirectByRole(role) {
+  switch (role) {
+    case "customer":
+      window.location.href = "home.html";
+      break;
+    case "restaurant":
+      window.location.href = "restaurant-dashboard.html";
+      break;
+    case "admin":
+      window.location.href = "admin.html";
+      break;
+    default:
+      alert("Unknown role");
+  }
+}
+
+// -------------------------
+// SIGN UP (email/password)
+// -------------------------
 window.signup = async function () {
   clearError();
 
@@ -55,11 +79,11 @@ window.signup = async function () {
   const role = roleInput.value;
 
   try {
-    // Create Firebase Auth user
+    // 1️⃣ Create Auth user
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
 
-    // Create Firestore user document
+    // 2️⃣ Create Firestore user
     await setDoc(doc(db, "users", user.uid), {
       name,
       email,
@@ -67,7 +91,7 @@ window.signup = async function () {
       createdAt: serverTimestamp()
     });
 
-    // If restaurant, create restaurant document
+    // 3️⃣ Create restaurant document if role=restaurant
     if (role === "restaurant") {
       await setDoc(doc(db, "restaurants", user.uid), {
         name: name + "'s Restaurant",
@@ -78,7 +102,7 @@ window.signup = async function () {
       });
     }
 
-    // Redirect by role
+    // 4️⃣ Redirect
     redirectByRole(role);
 
   } catch (error) {
@@ -86,7 +110,9 @@ window.signup = async function () {
   }
 };
 
-// --------- LOGIN ---------
+// -------------------------
+// LOGIN (email/password)
+// -------------------------
 window.login = async function () {
   clearError();
 
@@ -102,21 +128,35 @@ window.login = async function () {
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
 
-    const userSnap = await getDoc(doc(db, "users", user.uid));
+    let userSnap = await getDoc(doc(db, "users", user.uid));
+
+    // 1️⃣ Auto-create admin if missing
+    if (!userSnap.exists() && user.email === "admin@gmail.com") {
+      await setDoc(doc(db, "users", user.uid), {
+        name: "Admin",
+        email: user.email,
+        role: "admin",
+        createdAt: serverTimestamp()
+      });
+      redirectByRole("admin");
+      return;
+    }
+
     if (!userSnap.exists()) {
       showError("User record not found.");
       return;
     }
 
-    const role = userSnap.data().role;
-    redirectByRole(role);
+    redirectByRole(userSnap.data().role);
 
   } catch (error) {
     showError("Invalid email or password.");
   }
 };
 
-// --------- GOOGLE LOGIN ---------
+// -------------------------
+// GOOGLE LOGIN
+// -------------------------
 window.googleLogin = async function () {
   clearError();
   const provider = new GoogleAuthProvider();
@@ -126,11 +166,14 @@ window.googleLogin = async function () {
     const user = result.user;
 
     const userRef = doc(db, "users", user.uid);
-    const snap = await getDoc(userRef);
+    let snap = await getDoc(userRef);
 
+    // 1️⃣ If user doesn't exist, auto-create
     if (!snap.exists()) {
-      // First-time Google login → create Firestore user
-      const role = "customer"; // Default role for Google signup
+      // Default role: customer (or admin if email matches)
+      let role = "customer";
+      if (user.email === "admin@gmail.com") role = "admin";
+
       await setDoc(userRef, {
         name: user.displayName,
         email: user.email,
@@ -138,30 +181,16 @@ window.googleLogin = async function () {
         createdAt: serverTimestamp()
       });
 
+      // If Google login is restaurant (optional), you can add logic here
       redirectByRole(role);
-    } else {
-      const role = snap.data().role;
-      redirectByRole(role);
+      return;
     }
+
+    // 2️⃣ Redirect existing users by role
+    redirectByRole(snap.data().role);
+
   } catch (error) {
     console.error(error);
     showError("Google sign-in failed.");
   }
 };
-
-// --------- ROLE REDIRECT ---------
-function redirectByRole(role) {
-  switch (role) {
-    case "customer":
-      window.location.href = "home.html";
-      break;
-    case "restaurant":
-      window.location.href = "restaurant-dashboard.html";
-      break;
-    case "admin":
-      window.location.href = "admin.html";
-      break;
-    default:
-      alert("Unknown role");
-  }
-}
