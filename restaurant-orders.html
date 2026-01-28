@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Restaurant Orders | GurshaGO</title>
+  <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    .tabs button {
+      margin-right: 10px;
+    }
+    .order-card {
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="auth-container" style="max-width: 800px;">
+    <h2>Orders</h2>
+
+    <div class="tabs">
+      <button onclick="loadOrders('Pending')">New</button>
+      <button onclick="loadOrders('Preparing')">Preparing</button>
+      <button onclick="loadOrders('Delivered')">Completed</button>
+    </div>
+
+    <div id="ordersList"></div>
+  </div>
+
+  <script src="js/firebase.js" type="module"></script>
+  <script src="js/restaurant-orders.js" type="module"></script>
+</body>
+</html>

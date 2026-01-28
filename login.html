@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login | GurshaGO</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div class="auth-container">
+    <h2>Login to GurshaGO</h2>
+
+    <input type="email" id="email" placeholder="Email" />
+    <input type="password" id="password" placeholder="Password" />
+
+    <button onclick="login()">Login</button>
+    <button class="google-btn" onclick="googleLogin()">Login with Google</button>
+
+    <div id="error" class="error"></div>
+
+    <div class="auth-links">
+      <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+    </div>
+  </div>
+
+  <!-- Firebase -->
+  <script src="js/firebase.js" type="module"></script>
+  <script src="js/auth.js" type="module"></script>
+</body>
+</html>

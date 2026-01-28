@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Manage Menu | GurshaGO</title>
+  <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    .menu-form input,
+    .menu-form select {
+      width: 100%;
+      margin-top: 8px;
+      padding: 8px;
+    }
+
+    .menu-list {
+      margin-top: 20px;
+    }
+
+    .menu-row {
+      border-bottom: 1px solid #ddd;
+      padding: 8px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="auth-container" style="max-width: 700px;">
+    <h2>Manage Menu</h2>
+
+    <div class="menu-form">
+      <input id="itemName" placeholder="Item Name" />
+      <input id="itemPrice" type="number" placeholder="Price" />
+      <select id="itemCategory">
+        <option>Mains</option>
+        <option>Sides</option>
+        <option>Drinks</option>
+      </select>
+      <button onclick="addItem()">Add Item</button>
+    </div>
+
+    <div id="menuItems" class="menu-list"></div>
+  </div>
+
+  <script src="js/firebase.js" type="module"></script>
+  <script src="js/restaurant-menu.js" type="module"></script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Panel | GurshaGO</title>
+  <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    .stats-box {
+      display: inline-block;
+      padding: 15px;
+      margin: 10px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      width: 150px;
+      text-align: center;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background: #f2f2f2;
+    }
+
+    h3 {
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="auth-container" style="max-width: 1000px;">
+    <h2>Admin Panel</h2>
+
+    <div id="stats">
+      <div class="stats-box">Customers: <span id="totalCustomers">0</span></div>
+      <div class="stats-box">Restaurants: <span id="totalRestaurants">0</span></div>
+      <div class="stats-box">Orders: <span id="totalOrders">0</span></div>
+      <div class="stats-box">Revenue: <span id="totalRevenue">0</span> ETB</div>
+    </div>
+
+    <h3>Users</h3>
+    <table id="usersTable">
+      <thead>
+        <tr><th>Name</th><th>Email</th><th>Role</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <h3>Restaurants</h3>
+    <table id="restaurantsTable">
+      <thead>
+        <tr><th>Name</th><th>Cuisine</th><th>Status</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <h3>Orders</h3>
+    <table id="ordersTable">
+      <thead>
+        <tr><th>ID</th><th>Customer</th><th>Restaurant</th><th>Total</th><th>Status</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <script src="js/firebase.js" type="module"></script>
+  <script src="js/admin.js" type="module"></script>
+</body>
+</html>

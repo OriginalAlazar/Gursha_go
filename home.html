@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Home | GurshaGO</title>
+  <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .restaurant-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+    }
+
+    .restaurant-card {
+      border: 1px solid #ddd;
+      padding: 10px;
+      border-radius: 6px;
+      background: #fff;
+    }
+
+    .restaurant-card h4 {
+      margin: 5px 0;
+    }
+
+    .restaurant-card button {
+      margin-top: 10px;
+    }
+
+    .footer-nav {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 25px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="auth-container" style="max-width: 900px;">
+    <div class="header">
+      <h2>Welcome 👋</h2>
+      <div>🛒 Cart (0)</div>
+    </div>
+
+    <input type="text" placeholder="Search restaurants..." />
+
+    <div id="restaurantList" class="restaurant-grid"></div>
+
+    <div class="footer-nav">
+      <a href="home.html">Home</a>
+      <a href="orders.html">Orders</a>
+      <a href="cart.html">Cart</a>
+      <a href="login.html">Logout</a>
+    </div>
+  </div>
+
+<script src="js/firebase.js" type="module"></script>
+<script src="js/home.js" type="module"></script>
+</body>
+</html>

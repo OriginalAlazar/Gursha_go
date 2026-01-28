@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sign Up | GurshaGO</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div class="auth-container">
+    <h2>Create Account</h2>
+
+    <input type="text" id="name" placeholder="Full Name" />
+    <input type="email" id="email" placeholder="Email" />
+    <input type="password" id="password" placeholder="Password" />
+    <input type="password" id="confirmPassword" placeholder="Confirm Password" />
+
+    <div class="role-group">
+      <label>
+        <input type="radio" name="role" value="customer" checked />
+        Customer
+      </label>
+      <label>
+        <input type="radio" name="role" value="restaurant" />
+        Restaurant Owner
+      </label>
+    </div>
+
+    <button onclick="signup()">Sign Up</button>
+    <button class="google-btn" onclick="googleLogin()">Sign up with Google</button>
+
+    <div id="error" class="error"></div>
+
+    <div class="auth-links">
+      <p>Already have an account? <a href="login.html">Login</a></p>
+    </div>
+  </div>
+
+  <!-- Firebase -->
+  <script src="js/firebase.js" type="module"></script>
+  <script src="js/auth.js" type="module"></script>
+</body>
+</html>

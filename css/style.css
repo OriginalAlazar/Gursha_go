@@ -1,0 +1,86 @@
+/* css/style.css */
+* {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-container {
+  background: #fff;
+  padding: 25px;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.auth-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.auth-container input,
+.auth-container button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.auth-container input {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.auth-container button {
+  border: none;
+  background: #ff6b35;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.auth-container button:hover {
+  background: #e65a28;
+}
+
+.google-btn {
+  background: #4285f4;
+}
+
+.google-btn:hover {
+  background: #357ae8;
+}
+
+.auth-links {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.auth-links a {
+  color: #ff6b35;
+  text-decoration: none;
+}
+
+.role-group {
+  margin-top: 10px;
+}
+
+.role-group label {
+  margin-right: 10px;
+  font-size: 14px;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+  text-align: center;
+}

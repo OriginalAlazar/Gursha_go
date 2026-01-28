@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Menu | GurshaGO</title>
+  <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    .menu-header {
+      margin-bottom: 15px;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 15px;
+    }
+
+    .menu-item {
+      border: 1px solid #ddd;
+      padding: 10px;
+      border-radius: 6px;
+    }
+
+    .menu-item button {
+      margin-top: 10px;
+    }
+
+    .cart-bar {
+      margin-top: 20px;
+      text-align: center;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="auth-container" style="max-width: 900px;">
+    <div class="menu-header">
+      <h2 id="restaurantName">Menu</h2>
+    </div>
+
+    <div id="menuList" class="menu-grid"></div>
+
+    <div class="cart-bar">
+      🛒 Items in Cart: <span id="cartCount">0</span>
+      <br />
+      <button onclick="goToCart()">Go to Cart</button>
+    </div>
+  </div>
+
+  <script src="js/firebase.js" type="module"></script>
+  <script src="js/menu.js" type="module"></script>
+</body>
+</html>

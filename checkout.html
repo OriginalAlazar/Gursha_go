@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Checkout | GurshaGO</title>
+  <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    input {
+      width: 100%;
+      margin-top: 10px;
+      padding: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="auth-container" style="max-width: 600px;">
+    <h2>Checkout</h2>
+
+    <input id="address" placeholder="Delivery Address" />
+    <input id="phone" placeholder="Phone Number" />
+
+    <div id="orderSummary"></div>
+
+    <button onclick="placeOrder()">Place Order (Cash on Delivery)</button>
+  </div>
+
+  <script src="js/firebase.js" type="module"></script>
+  <script src="js/checkout.js" type="module"></script>
+</body>
+</html>

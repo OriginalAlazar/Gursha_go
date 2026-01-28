@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Restaurant Dashboard | GurshaGO</title>
+  <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .stat-box {
+      background: #f8f8f8;
+      padding: 15px;
+      border-radius: 6px;
+      text-align: center;
+    }
+
+    .links button {
+      margin-top: 10px;
+    }
+
+    .orders-list {
+      margin-top: 20px;
+    }
+
+    .order-item {
+      border-bottom: 1px solid #ddd;
+      padding: 8px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="auth-container" style="max-width: 700px;">
+    <h2>🍽 Addis Kitchen</h2>
+
+    <label>
+      <input type="checkbox" checked />
+      Online
+    </label>
+
+    <div class="stats">
+      <div class="stat-box">
+        <h3>5</h3>
+        <p>Today's Orders</p>
+      </div>
+      <div class="stat-box">
+        <h3>1,200 ETB</h3>
+        <p>Today's Revenue</p>
+      </div>
+    </div>
+
+    <div class="links">
+      <button onclick="location.href='restaurant-menu.html'">
+        Manage Menu
+      </button>
+      <button onclick="location.href='restaurant-orders.html'">
+        View Orders
+      </button>
+    </div>
+
+    <div class="orders-list">
+      <h4>Recent Orders</h4>
+      <div class="order-item">#ORD123 – Preparing</div>
+      <div class="order-item">#ORD122 – Completed</div>
+      <div class="order-item">#ORD121 – Pending</div>
+    </div>
+  </div>
+<script src="js/firebase.js" type="module"></script>
+<script src="js/restaurant-dashboard.js" type="module"></script>
+
+</body>
+</html>

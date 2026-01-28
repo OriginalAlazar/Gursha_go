@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cart | GurshaGO</title>
+  <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    .cart-item {
+      border-bottom: 1px solid #ddd;
+      padding: 10px 0;
+    }
+    .summary {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="auth-container" style="max-width: 700px;">
+    <h2>Your Cart</h2>
+
+    <div id="cartItems"></div>
+
+    <div class="summary">
+      <p>Subtotal: <span id="subtotal">0</span> ETB</p>
+      <p>Delivery Fee: <span id="delivery">50</span> ETB</p>
+      <h3>Total: <span id="total">0</span> ETB</h3>
+    </div>
+
+    <button onclick="goToCheckout()">Proceed to Checkout</button>
+  </div>
+
+  <script src="js/cart.js"></script>
+</body>
+</html>
