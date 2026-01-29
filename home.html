@@ -9,6 +9,634 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
+<style>
+    /* Restaurant Section - Centered */
+    
+    .restaurant-section {
+        margin: 60px 0;
+        width: 100%;
+    }
+    
+    .section-header {
+        text-align: center;
+        margin-bottom: 50px;
+        width: 100%;
+    }
+    
+    .section-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 2.8rem;
+        color: #d32f2f;
+        margin-bottom: 15px;
+        position: relative;
+        display: inline-block;
+    }
+    
+    .section-title:after {
+        content: '';
+        position: absolute;
+        width: 80px;
+        height: 4px;
+        background: #d32f2f;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 2px;
+    }
+    
+    .section-subtitle {
+        font-size: 1.1rem;
+        color: #666;
+        max-width: 600px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    /* Centered Restaurant Container */
+    
+    .restaurant-container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin: 0 auto;
+    }
+    /* Restaurant Grid - Centered */
+    
+    .restaurant-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+        gap: 35px;
+        margin-bottom: 60px;
+        width: 100%;
+        max-width: 1200px;
+        justify-items: center;
+    }
+    /* Restaurant Card - Centered Content */
+    
+    .restaurant-card {
+        background: white;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        transition: all 0.4s ease;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid #f0f0f0;
+        width: 100%;
+        max-width: 380px;
+        margin: 0 auto;
+    }
+    
+    .card-content {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+    }
+    
+    .restaurant-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    }
+    /* Featured Restaurant */
+    
+    .restaurant-card.featured {
+        border: 2px solid #d32f2f;
+        position: relative;
+    }
+    
+    .featured-badge {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: #d32f2f;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 50px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        z-index: 10;
+        box-shadow: 0 5px 15px rgba(211, 47, 47, 0.3);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    /* Restaurant Header - Centered */
+    
+    .restaurant-header {
+        padding: 25px 25px 15px;
+        text-align: center;
+    }
+    
+    .restaurant-name {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 8px;
+        color: #333;
+        font-family: 'Playfair Display', serif;
+        text-align: center;
+    }
+    
+    .restaurant-cuisine {
+        font-size: 1rem;
+        color: #d32f2f;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        text-align: center;
+    }
+    /* Restaurant Image */
+    
+    .restaurant-image {
+        height: 200px;
+        width: 100%;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+    }
+    /* Restaurant Info - Centered */
+    
+    .restaurant-info {
+        padding: 0 25px 25px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .restaurant-desc {
+        color: #666;
+        margin-bottom: 25px;
+        font-size: 0.95rem;
+        line-height: 1.7;
+        text-align: center;
+    }
+    /* Restaurant Stats - Centered */
+    
+    .restaurant-stats {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 25px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #f0f0f0;
+        gap: 20px;
+    }
+    
+    .stat-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        flex: 1;
+    }
+    
+    .stat-label {
+        font-size: 0.85rem;
+        color: #888;
+        margin-bottom: 5px;
+        font-weight: 500;
+    }
+    
+    .stat-value {
+        font-weight: 600;
+        font-size: 1.1rem;
+        color: #333;
+    }
+    /* Delivery & Pricing Section - Centered */
+    
+    .delivery-pricing-section {
+        background: #fff5f5;
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 25px;
+        border: 1px solid #ffebee;
+        text-align: center;
+    }
+    
+    .delivery-title {
+        font-size: 1.3rem;
+        color: #333;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+    
+    .delivery-title i {
+        color: #d32f2f;
+    }
+    
+    .delivery-info {
+        font-size: 0.9rem;
+        color: #666;
+        line-height: 1.6;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    
+    .delivery-info strong {
+        color: #d32f2f;
+    }
+    /* Pricing Tiers - Centered */
+    
+    .pricing-tiers {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+    
+    .tier {
+        background: white;
+        border-radius: 8px;
+        padding: 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: 1px solid #ffcdd2;
+    }
+    
+    .tier.unavailable {
+        background: #f5f5f5;
+        opacity: 0.7;
+    }
+    
+    .distance {
+        font-weight: 600;
+        font-size: 0.9rem;
+        color: #333;
+    }
+    
+    .price {
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: #d32f2f;
+    }
+    
+    .tier.unavailable .price {
+        color: #888;
+    }
+    /* Current Pricing - Centered */
+    
+    .current-pricing {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 15px;
+        border-top: 2px dashed #ffcdd2;
+        gap: 30px;
+        flex-wrap: wrap;
+    }
+    
+    .your-distance {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+    
+    .your-distance i {
+        width: 40px;
+        height: 40px;
+        background: #d32f2f;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+    }
+    
+    .your-distance .label {
+        font-size: 0.85rem;
+        color: #888;
+        text-align: left;
+    }
+    
+    .your-distance .value {
+        font-weight: 600;
+        font-size: 1.2rem;
+        color: #333;
+        text-align: left;
+    }
+    
+    .your-price {
+        text-align: center;
+    }
+    
+    .price-amount {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #d32f2f;
+        line-height: 1;
+    }
+    
+    .your-price .label {
+        font-size: 0.85rem;
+        color: #888;
+        margin-top: 5px;
+    }
+    /* Action Buttons - Centered */
+    
+    .action-buttons {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 15px;
+        justify-content: center;
+    }
+    
+    .red-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 16px;
+        background: #d32f2f;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        flex: 1;
+        max-width: 200px;
+    }
+    
+    .red-btn:hover {
+        background: #b71c1c;
+        transform: translateY(-2px);
+        box-shadow: 0 7px 15px rgba(211, 47, 47, 0.3);
+    }
+    
+    .white-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 16px;
+        background: white;
+        color: #d32f2f;
+        border: 2px solid #d32f2f;
+        border-radius: 10px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        flex: 1;
+        max-width: 200px;
+    }
+    
+    .white-btn:hover {
+        background: #fff5f5;
+        transform: translateY(-2px);
+        box-shadow: 0 7px 15px rgba(211, 47, 47, 0.2);
+    }
+    /* Cart Notification - Centered */
+    
+    .cart-notification {
+        display: none;
+        background: #e8f5e9;
+        color: #2e7d32;
+        padding: 12px 20px;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        animation: fadeIn 0.5s ease;
+        text-align: center;
+        margin: 0 auto;
+        max-width: 300px;
+    }
+    
+    .cart-notification.show {
+        display: flex;
+    }
+    
+    .cart-notification i {
+        color: #4caf50;
+        font-size: 1.2rem;
+    }
+    
+    .view-cart {
+        color: #2e7d32;
+        font-weight: 600;
+        text-decoration: underline;
+        margin-left: 5px;
+    }
+    
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    /* Centered Distance Control */
+    
+    .distance-control-wrapper {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+    
+    .distance-control {
+        background: white;
+        border-radius: 16px;
+        padding: 30px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        border: 1px solid #f0f0f0;
+        max-width: 800px;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .control-header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 15px;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    
+    .control-header h3 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #333;
+        text-align: center;
+    }
+    
+    .current-distance-display {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #d32f2f;
+        text-align: center;
+    }
+    
+    .control-subtitle {
+        color: #666;
+        margin-bottom: 25px;
+        font-size: 1rem;
+        text-align: center;
+    }
+    
+    .slider-container {
+        margin: 25px 0;
+        width: 100%;
+    }
+    
+    .distance-slider {
+        width: 100%;
+        height: 12px;
+        -webkit-appearance: none;
+        appearance: none;
+        background: linear-gradient(to right, #ffcdd2, #d32f2f);
+        border-radius: 10px;
+        outline: none;
+        margin: 0 auto;
+    }
+    
+    .distance-slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: white;
+        cursor: pointer;
+        border: 4px solid #d32f2f;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .slider-labels {
+        display: flex;
+        justify-content: space-between;
+        color: #888;
+        font-size: 0.9rem;
+        margin-top: 10px;
+        width: 100%;
+    }
+    
+    .slider-note {
+        text-align: center;
+        color: #888;
+        font-style: italic;
+        margin-top: 15px;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+    }
+    
+    .slider-note i {
+        color: #d32f2f;
+    }
+    /* Responsive Design for Centered Layout */
+    
+    @media (max-width: 1200px) {
+        .restaurant-grid {
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            max-width: 1100px;
+        }
+    }
+    
+    @media (max-width: 992px) {
+        .restaurant-grid {
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            max-width: 700px;
+            gap: 30px;
+        }
+        .distance-control {
+            max-width: 700px;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .restaurant-grid {
+            grid-template-columns: 1fr;
+            max-width: 500px;
+            justify-items: center;
+        }
+        .restaurant-card {
+            max-width: 450px;
+        }
+        .section-title {
+            font-size: 2.3rem;
+        }
+        .restaurant-stats {
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+        .stat-item {
+            flex: 0 1 calc(50% - 15px);
+            min-width: 120px;
+        }
+        .pricing-tiers {
+            grid-template-columns: 1fr;
+            max-width: 300px;
+            margin: 0 auto 20px;
+        }
+        .action-buttons {
+            flex-direction: column;
+            align-items: center;
+        }
+        .red-btn,
+        .white-btn {
+            max-width: 100%;
+            width: 100%;
+        }
+        .current-pricing {
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        .your-distance,
+        .your-price {
+            text-align: center;
+        }
+        .your-distance {
+            flex-direction: column;
+            gap: 8px;
+        }
+        .distance-control {
+            padding: 20px;
+            max-width: 500px;
+        }
+        .control-header {
+            flex-direction: column;
+            gap: 10px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .restaurant-info {
+            padding: 0 20px 20px;
+        }
+        .restaurant-header {
+            padding: 20px 20px 10px;
+        }
+        .restaurant-card {
+            max-width: 350px;
+        }
+        .delivery-pricing-section {
+            padding: 15px;
+        }
+        .distance-control {
+            padding: 20px 15px;
+        }
+        .section-title {
+            font-size: 2rem;
+        }
+    }
+</style>
+
 <body>
 
     <!-- ================= HEADER ================= -->
@@ -71,9 +699,296 @@
 
 
 
-    <div id="restaurantList" class="restaurant-grid">
+    <!-- Restaurant Section -->
+    <section class="restaurant-section">
+        <div class="section-header">
+            <h2 class="section-title">Restaurant Collection</h2>
+            <p class="section-subtitle">Discover exceptional dining experiences with tailored delivery</p>
+        </div>
 
-    </div>
+        <!-- Centered Restaurant Container -->
+        <div class="restaurant-container">
+            <!-- Restaurant Grid -->
+            <div class="restaurant-grid">
+                <!-- Editor's Choice: Addis Kitchen -->
+                <div class="restaurant-card featured">
+                    <div class="featured-badge">
+                        <i class="fas fa-crown"></i> Editor's Choice
+                    </div>
+                    <div class="card-content">
+                        <div class="restaurant-header">
+                            <h3 class="restaurant-name">Addis Kitchen</h3>
+                            <div class="restaurant-cuisine">Authentic Ethiopian Cuisine</div>
+                        </div>
+
+                        <div class="restaurant-image" style="background-image: url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');"></div>
+
+                        <div class="restaurant-info">
+                            <p class="restaurant-desc">Experience the rich flavors of Ethiopia with traditional injera bread, spicy stews, and aromatic coffee ceremonies. Family recipes passed down for generations.</p>
+
+                            <div class="restaurant-stats">
+                                <div class="stat-item">
+                                    <div class="stat-label">Rating</div>
+                                    <div class="stat-value">4.9/5.0</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-label">Prep Time</div>
+                                    <div class="stat-value">25-35 min</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-label">Popular Item</div>
+                                    <div class="stat-value">Doro Wat</div>
+                                </div>
+                            </div>
+
+                            <!-- Delivery & Pricing Section -->
+                            <div class="delivery-pricing-section">
+                                <h4 class="delivery-title"><i class="fas fa-shipping-fast"></i> Delivery & Pricing</h4>
+                                <p class="delivery-info">Delivery in <strong>an hour or less</strong>. Each order can contain up to <strong>eight items</strong>.</p>
+
+                                <div class="pricing-tiers">
+                                    <div class="tier">
+                                        <span class="distance">0-3 KM</span>
+                                        <span class="price">160 ETB</span>
+                                    </div>
+                                    <div class="tier">
+                                        <span class="distance">3-6 KM</span>
+                                        <span class="price">200 ETB</span>
+                                    </div>
+                                    <div class="tier">
+                                        <span class="distance">6-9 KM</span>
+                                        <span class="price">250 ETB</span>
+                                    </div>
+                                    <div class="tier unavailable">
+                                        <span class="distance">9-12 KM</span>
+                                        <span class="price">N/A</span>
+                                    </div>
+                                </div>
+
+                                <div class="current-pricing">
+                                    <div class="your-distance">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <div>
+                                            <div class="label">Your Distance</div>
+                                            <div class="value" id="distance-1">5 km</div>
+                                        </div>
+                                    </div>
+                                    <div class="your-price">
+                                        <div class="price-amount" id="price-1">200 ETB</div>
+                                        <div class="label">Delivery Fee</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="action-buttons">
+                                <button class="add-to-cart-btn red-btn">
+                                <i class="fas fa-cart-plus"></i> Add to Cart
+                            </button>
+                                <button class="order-now-btn white-btn">
+                                <i class="fas fa-bolt"></i> Order Now
+                            </button>
+                            </div>
+
+                            <div class="cart-notification" id="notification-1">
+                                <i class="fas fa-check-circle"></i> Added to cart! <a href="#" class="view-cart">View Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Roma Pizza -->
+                <div class="restaurant-card">
+                    <div class="card-content">
+                        <div class="restaurant-header">
+                            <h3 class="restaurant-name">Roma Pizza</h3>
+                            <div class="restaurant-cuisine">Authentic Italian Pizza</div>
+                        </div>
+
+                        <div class="restaurant-image" style="background-image: url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');"></div>
+
+                        <div class="restaurant-info">
+                            <p class="restaurant-desc">Neapolitan-style pizza baked in a traditional wood-fired oven. Fresh ingredients imported directly from Italy, with dough fermented for 48 hours.</p>
+
+                            <div class="restaurant-stats">
+                                <div class="stat-item">
+                                    <div class="stat-label">Rating</div>
+                                    <div class="stat-value">4.7/5.0</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-label">Prep Time</div>
+                                    <div class="stat-value">20-30 min</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-label">Popular Item</div>
+                                    <div class="stat-value">Margherita</div>
+                                </div>
+                            </div>
+
+                            <!-- Delivery & Pricing Section -->
+                            <div class="delivery-pricing-section">
+                                <h4 class="delivery-title"><i class="fas fa-shipping-fast"></i> Delivery & Pricing</h4>
+                                <p class="delivery-info">Delivery in <strong>an hour or less</strong>. Each order can contain up to <strong>eight items</strong>.</p>
+
+                                <div class="pricing-tiers">
+                                    <div class="tier">
+                                        <span class="distance">0-3 KM</span>
+                                        <span class="price">160 ETB</span>
+                                    </div>
+                                    <div class="tier">
+                                        <span class="distance">3-6 KM</span>
+                                        <span class="price">200 ETB</span>
+                                    </div>
+                                    <div class="tier">
+                                        <span class="distance">6-9 KM</span>
+                                        <span class="price">250 ETB</span>
+                                    </div>
+                                    <div class="tier unavailable">
+                                        <span class="distance">9-12 KM</span>
+                                        <span class="price">N/A</span>
+                                    </div>
+                                </div>
+
+                                <div class="current-pricing">
+                                    <div class="your-distance">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <div>
+                                            <div class="label">Your Distance</div>
+                                            <div class="value" id="distance-2">5 km</div>
+                                        </div>
+                                    </div>
+                                    <div class="your-price">
+                                        <div class="price-amount" id="price-2">200 ETB</div>
+                                        <div class="label">Delivery Fee</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="action-buttons">
+                                <button class="add-to-cart-btn red-btn">
+                                <i class="fas fa-cart-plus"></i> Add to Cart
+                            </button>
+                                <button class="order-now-btn white-btn">
+                                <i class="fas fa-bolt"></i> Order Now
+                            </button>
+                            </div>
+
+                            <div class="cart-notification" id="notification-2">
+                                <i class="fas fa-check-circle"></i> Added to cart! <a href="#" class="view-cart">View Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mignot's Restaurant -->
+                <div class="restaurant-card">
+                    <div class="card-content">
+                        <div class="restaurant-header">
+                            <h3 class="restaurant-name">Mignot's Restaurant</h3>
+                            <div class="restaurant-cuisine">Fine Dining Experience</div>
+                        </div>
+
+                        <div class="restaurant-image" style="background-image: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');"></div>
+
+                        <div class="restaurant-info">
+                            <p class="restaurant-desc">Award-winning fine dining with a seasonal menu crafted by internationally acclaimed chefs. Elegant presentation and exceptional service.</p>
+
+                            <div class="restaurant-stats">
+                                <div class="stat-item">
+                                    <div class="stat-label">Rating</div>
+                                    <div class="stat-value">4.8/5.0</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-label">Prep Time</div>
+                                    <div class="stat-value">35-45 min</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-label">Popular Item</div>
+                                    <div class="stat-value">Filet Mignon</div>
+                                </div>
+                            </div>
+
+                            <!-- Delivery & Pricing Section -->
+                            <div class="delivery-pricing-section">
+                                <h4 class="delivery-title"><i class="fas fa-shipping-fast"></i> Delivery & Pricing</h4>
+                                <p class="delivery-info">Delivery in <strong>an hour or less</strong>. Each order can contain up to <strong>eight items</strong>.</p>
+
+                                <div class="pricing-tiers">
+                                    <div class="tier">
+                                        <span class="distance">0-3 KM</span>
+                                        <span class="price">160 ETB</span>
+                                    </div>
+                                    <div class="tier">
+                                        <span class="distance">3-6 KM</span>
+                                        <span class="price">200 ETB</span>
+                                    </div>
+                                    <div class="tier">
+                                        <span class="distance">6-9 KM</span>
+                                        <span class="price">250 ETB</span>
+                                    </div>
+                                    <div class="tier unavailable">
+                                        <span class="distance">9-12 KM</span>
+                                        <span class="price">N/A</span>
+                                    </div>
+                                </div>
+
+                                <div class="current-pricing">
+                                    <div class="your-distance">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <div>
+                                            <div class="label">Your Distance</div>
+                                            <div class="value" id="distance-3">5 km</div>
+                                        </div>
+                                    </div>
+                                    <div class="your-price">
+                                        <div class="price-amount" id="price-3">200 ETB</div>
+                                        <div class="label">Delivery Fee</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="action-buttons">
+                                <button class="add-to-cart-btn red-btn">
+                                <i class="fas fa-cart-plus"></i> Add to Cart
+                            </button>
+                                <button class="order-now-btn white-btn">
+                                <i class="fas fa-bolt"></i> Order Now
+                            </button>
+                            </div>
+
+                            <div class="cart-notification" id="notification-3">
+                                <i class="fas fa-check-circle"></i> Added to cart! <a href="#" class="view-cart">View Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Centered Distance Control -->
+        <div class="distance-control-wrapper">
+            <div class="distance-control">
+                <div class="control-header">
+                    <h3>Adjust Your Location Distance</h3>
+                    <div class="current-distance-display" id="current-distance-display">5 km</div>
+                </div>
+                <p class="control-subtitle">Slide to adjust your distance from restaurants. Delivery fees update automatically.</p>
+
+                <div class="slider-container">
+                    <input type="range" min="1" max="12" value="5" class="distance-slider" id="distance-slider">
+                    <div class="slider-labels">
+                        <span>1 km</span>
+                        <span>3 km</span>
+                        <span>6 km</span>
+                        <span>9 km</span>
+                        <span>12 km</span>
+                    </div>
+                </div>
+
+                <p class="slider-note"><i class="fas fa-info-circle"></i> Delivery available up to 9 km only</p>
+            </div>
+        </div>
+    </section>
+
 
     <!-- ================= FOOTER ================= -->
     <footer class="footer">
