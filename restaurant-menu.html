@@ -1,48 +1,1159 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <title>Manage Menu | GurshaGO</title>
-  <link rel="stylesheet" href="css/style.css" />
+    <meta charset="UTF-8" />
+    <title>Manage Menu | GurshaGO</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <style>
-    .menu-form input,
-    .menu-form select {
-      width: 100%;
-      margin-top: 8px;
-      padding: 8px;
-    }
 
-    .menu-list {
-      margin-top: 20px;
-    }
-
-    .menu-row {
-      border-bottom: 1px solid #ddd;
-      padding: 8px 0;
-    }
-  </style>
+    <style>
+        textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #eee;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            background: white;
+            color: #333;
+            box-sizing: border-box;
+            resize: vertical;
+            min-height: 60px;
+        }
+        
+        textarea:focus {
+            outline: none;
+            border-color: #ff0000;
+            box-shadow: 0 0 0 4px rgba(255, 0, 0, 0.1);
+        }
+        /* ===== RESTAURANT MENU MANAGEMENT STYLES ===== */
+        
+        .auth-container {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 40px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(255, 0, 0, 0.1);
+            border: 2px solid rgba(255, 0, 0, 0.1);
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .auth-container h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 20px;
+        }
+        
+        .auth-container h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, #ff0000, #ff6666);
+            border-radius: 2px;
+        }
+        /* ===== MENU FORM ===== */
+        
+        .menu-form {
+            background: #f8f9fa;
+            border: 2px solid #eee;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            align-items: end;
+        }
+        
+        .menu-form h3 {
+            grid-column: 1 / -1;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #333;
+            margin: 0 0 20px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .menu-form h3 i {
+            color: #ff0000;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .form-group label {
+            font-weight: 600;
+            color: #333;
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+        }
+        
+        .menu-form input,
+        .menu-form select {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #eee;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            background: white;
+            color: #333;
+            box-sizing: border-box;
+        }
+        
+        .menu-form input:focus,
+        .menu-form select:focus {
+            outline: none;
+            border-color: #ff0000;
+            box-shadow: 0 0 0 4px rgba(255, 0, 0, 0.1);
+        }
+        
+        .menu-form input::placeholder {
+            color: #999;
+        }
+        
+        .menu-form button {
+            padding: 16px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            height: fit-content;
+        }
+        
+        .menu-form button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 0, 0, 0.3);
+        }
+        
+        .menu-form button:active {
+            transform: translateY(-1px);
+        }
+        /* ===== MENU LIST ===== */
+        
+        .menu-list {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        /* ===== CATEGORY SECTIONS ===== */
+        
+        .category-section {
+            background: #f8f9fa;
+            border: 2px solid #eee;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        
+        .category-header {
+            background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+            padding: 20px 25px;
+            color: white;
+        }
+        
+        .category-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .category-title i {
+            font-size: 1.3rem;
+        }
+        
+        .category-count {
+            background: white;
+            color: #ff0000;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-left: auto;
+        }
+        /* ===== MENU ITEMS ===== */
+        
+        .menu-items {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        /* ===== MENU ITEM CARD ===== */
+        
+        .menu-item {
+            background: white;
+            border: 2px solid #eee;
+            border-radius: 15px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .menu-item:hover {
+            border-color: #ff0000;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 0, 0, 0.1);
+        }
+        
+        .menu-item-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 12px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        
+        .menu-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .menu-item-image-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ff0000 0%, #ff6666 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        
+        .menu-item-content {
+            flex: 1;
+        }
+        
+        .menu-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+        
+        .item-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #333;
+            margin: 0;
+        }
+        
+        .item-price {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #ff0000;
+            background: rgba(255, 0, 0, 0.1);
+            padding: 6px 15px;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+        
+        .item-description {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        
+        .item-details {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .item-category {
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .item-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .status-toggle {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 26px;
+        }
+        
+        .status-toggle input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .status-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        
+        .status-slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked+.status-slider {
+            background-color: #4caf50;
+        }
+        
+        input:checked+.status-slider:before {
+            transform: translateX(24px);
+        }
+        
+        .menu-item-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .action-btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .edit-btn {
+            background: #e3f2fd;
+            color: #1976d2;
+        }
+        
+        .edit-btn:hover {
+            background: #bbdefb;
+            transform: translateY(-2px);
+        }
+        
+        .delete-btn {
+            background: #ffebee;
+            color: #d32f2f;
+        }
+        
+        .delete-btn:hover {
+            background: #ffcdd2;
+            transform: translateY(-2px);
+        }
+        /* ===== EMPTY STATE ===== */
+        
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        
+        .empty-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, rgba(255, 0, 0, 0.1) 0%, rgba(255, 102, 102, 0.1) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            border: 3px dashed #ff6666;
+        }
+        
+        .empty-icon i {
+            font-size: 48px;
+            color: #ff6666;
+        }
+        
+        .empty-state h3 {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .empty-state p {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        /* ===== EDIT MODAL ===== */
+        
+        .edit-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .edit-modal.active {
+            display: flex;
+        }
+        
+        .edit-modal-content {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            width: 90%;
+            max-width: 500px;
+            animation: slideUp 0.3s ease;
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .edit-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .edit-modal-header h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #333;
+            margin: 0;
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #666;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .close-modal:hover {
+            color: #ff0000;
+        }
+        /* ===== MENU STATS ===== */
+        
+        .menu-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: white;
+            border: 2px solid rgba(255, 0, 0, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            border-color: #ff0000;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 0, 0, 0.1);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #ff0000;
+            margin-bottom: 5px;
+            line-height: 1;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        /* ===== DRAG AND DROP ===== */
+        
+        .menu-item.dragging {
+            opacity: 0.5;
+            border-style: dashed;
+        }
+        
+        .menu-item.drag-over {
+            border-color: #ff0000;
+            background: rgba(255, 0, 0, 0.05);
+        }
+        
+        .drag-handle {
+            cursor: move;
+            color: #999;
+            padding: 10px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .drag-handle:hover {
+            background: #f0f0f0;
+            color: #ff0000;
+        }
+        /* ===== RESPONSIVE DESIGN ===== */
+        
+        @media (max-width: 768px) {
+            .auth-container {
+                margin: 40px 20px;
+                padding: 30px 25px;
+                margin-top: 60px;
+            }
+            .auth-container h2 {
+                font-size: 2rem;
+            }
+            .menu-form {
+                grid-template-columns: 1fr;
+                padding: 25px;
+            }
+            .menu-item {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 15px;
+            }
+            .menu-item-image {
+                width: 100%;
+                height: 200px;
+            }
+            .menu-item-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            .item-price {
+                align-self: flex-start;
+            }
+            .menu-item-actions {
+                width: 100%;
+                justify-content: center;
+                margin-top: 15px;
+            }
+            .category-title {
+                font-size: 1.3rem;
+            }
+            .edit-modal-content {
+                padding: 30px 20px;
+                margin: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .auth-container {
+                margin: 30px 15px;
+                padding: 25px 20px;
+            }
+            .auth-container h2 {
+                font-size: 1.8rem;
+            }
+            .menu-form {
+                padding: 20px;
+            }
+            .menu-form input,
+            .menu-form select,
+            .menu-form button {
+                padding: 12px 15px;
+            }
+            .menu-item-actions {
+                flex-direction: column;
+            }
+            .action-btn {
+                width: 100%;
+                justify-content: center;
+            }
+            .item-details {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            .menu-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .stat-card {
+                padding: 15px;
+            }
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+        /* ===== LOADING STATE ===== */
+        
+        .loading-state {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #ff0000;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .loading-state p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+        /* ===== BULK ACTIONS ===== */
+        
+        .bulk-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border: 2px solid #eee;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .bulk-select {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .bulk-select input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #ff0000;
+        }
+        
+        .bulk-select label {
+            font-weight: 600;
+            color: #333;
+            cursor: pointer;
+        }
+        
+        .bulk-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .bulk-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .bulk-activate {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+        
+        .bulk-activate:hover {
+            background: #c8e6c9;
+            transform: translateY(-2px);
+        }
+        
+        .bulk-deactivate {
+            background: #ffebee;
+            color: #d32f2f;
+        }
+        
+        .bulk-deactivate:hover {
+            background: #ffcdd2;
+            transform: translateY(-2px);
+        }
+        
+        .bulk-delete {
+            background: #ff0000;
+            color: white;
+        }
+        
+        .bulk-delete:hover {
+            background: #cc0000;
+            transform: translateY(-2px);
+        }
+    </style>
 </head>
+
 <body>
 
-  <div class="auth-container" style="max-width: 700px;">
-    <h2>Manage Menu</h2>
+    <!-- ================= HEADER ================= -->
+    <header class="header">
+        <div class="container header-inner">
 
-    <div class="menu-form">
-      <input id="itemName" placeholder="Item Name" />
-      <input id="itemPrice" type="number" placeholder="Price" />
-      <select id="itemCategory">
-        <option>Mains</option>
-        <option>Sides</option>
-        <option>Drinks</option>
-      </select>
-      <button onclick="addItem()">Add Item</button>
+            <!-- Logo -->
+            <span class="logo-name">GurshaGo</span>
+
+            <!-- Navigation -->
+            <nav class="nav">
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                <a href="" class="red" style="background-color: red;"></a>
+                <a href="index.html" class="active">Home</a>
+                <a href="restaurant-dashboard.html">Restaurants</a>
+            </nav>
+
+            <!-- Search -->
+            <div class="search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Search restaurants..." />
+            </div>
+
+            <!-- Actions -->
+            <div class="actions">
+                <a href="login.html" class="login-btn">
+                    <i class="fa-solid fa-right-to-bracket"></i> Login
+                </a>
+
+                <a href="cart.html" class="cart-btn">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+
+        </div>
+    </header>
+
+    <div class="auth-container" style="max-width: 900px;">
+        <h2>Manage Menu</h2>
+
+        <!-- Menu Statistics -->
+        <div class="menu-stats">
+            <div class="stat-card">
+                <div class="stat-number" id="totalItems">24</div>
+                <div class="stat-label">Total Items</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="activeItems">20</div>
+                <div class="stat-label">Active Items</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="categoriesCount">5</div>
+                <div class="stat-label">Categories</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="avgPrice">185</div>
+                <div class="stat-label">Avg Price (ETB)</div>
+            </div>
+        </div>
+
+        <!-- Add Item Form -->
+        <div class="menu-form">
+            <h3><i class="fas fa-plus-circle"></i> Add New Menu Item</h3>
+
+            <div class="form-group">
+                <label for="itemName">Item Name</label>
+                <input type="text" id="itemName" placeholder="Enter item name" />
+            </div>
+
+            <div class="form-group">
+                <label for="itemPrice">Price (ETB)</label>
+                <input type="number" id="itemPrice" placeholder="Enter price" min="0" step="0.01" />
+            </div>
+
+            <div class="form-group">
+                <label for="itemCategory">Category</label>
+                <select id="itemCategory">
+                <option value="mains">Main Dishes</option>
+                <option value="sides">Side Dishes</option>
+                <option value="appetizers">Appetizers</option>
+                <option value="drinks">Drinks</option>
+                <option value="desserts">Desserts</option>
+            </select>
+            </div>
+
+            <div class="form-group">
+                <label for="itemDescription">Description (Optional)</label>
+                <textarea id="itemDescription" placeholder="Enter item description" rows="1"></textarea>
+            </div>
+
+            <button onclick="addItem()" id="addItemBtn">
+            <i class="fas fa-plus"></i>
+            Add to Menu
+        </button>
+        </div>
+
+        <!-- Bulk Actions -->
+        <div class="bulk-actions" style="display: none;" id="bulkActions">
+            <div class="bulk-select">
+                <input type="checkbox" id="selectAll" onchange="toggleSelectAll(this)" />
+                <label for="selectAll">Select All</label>
+                <span id="selectedCount" style="color: #666; font-size: 0.9rem;">0 items selected</span>
+            </div>
+            <div class="bulk-buttons">
+                <button class="bulk-btn bulk-activate" onclick="bulkActivate()">
+                <i class="fas fa-check-circle"></i> Activate
+            </button>
+                <button class="bulk-btn bulk-deactivate" onclick="bulkDeactivate()">
+                <i class="fas fa-times-circle"></i> Deactivate
+            </button>
+                <button class="bulk-btn bulk-delete" onclick="bulkDelete()">
+                <i class="fas fa-trash"></i> Delete
+            </button>
+            </div>
+        </div>
+
+        <!-- Menu List by Categories -->
+        <div id="menuItems" class="menu-list">
+            <!-- Categories will be dynamically inserted here -->
+
+            <!-- Example Mains Category -->
+            <div class="category-section">
+                <div class="category-header">
+                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                        <h3 class="category-title">
+                            <i class="fas fa-utensils"></i> Main Dishes
+                        </h3>
+                        <span class="category-count">8 items</span>
+                    </div>
+                </div>
+                <div class="menu-items">
+                    <!-- Example Menu Item -->
+                    <div class="menu-item" data-id="1" draggable="true">
+                        <div class="drag-handle">
+                            <i class="fas fa-grip-vertical"></i>
+                        </div>
+                        <div class="menu-item-image">
+                            <div class="menu-item-image-placeholder">
+                                T
+                            </div>
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h4 class="item-name">Tibs with Injera</h4>
+                                <span class="item-price">250 ETB</span>
+                            </div>
+                            <p class="item-description">Traditional Ethiopian grilled meat served with injera bread. Spicy and flavorful.</p>
+                            <div class="item-details">
+                                <span class="item-category">
+                                <i class="fas fa-tag"></i> Main Dish
+                            </span>
+                                <div class="item-status">
+                                    <label class="status-toggle">
+                                    <input type="checkbox" checked onchange="toggleItemStatus('1', this.checked)">
+                                    <span class="status-slider"></span>
+                                </label>
+                                    <span style="color: #4caf50; font-weight: 500;">Active</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="menu-item-actions">
+                            <button class="action-btn edit-btn" onclick="editItem('1')">
+                            <i class="fas fa-edit"></i>
+                            Edit
+                        </button>
+                            <button class="action-btn delete-btn" onclick="deleteItem('1')">
+                            <i class="fas fa-trash"></i>
+                            Delete
+                        </button>
+                            <input type="checkbox" class="item-checkbox" style="margin-left: 10px;" onchange="updateBulkActions()">
+                        </div>
+                    </div>
+
+                    <!-- Another example item -->
+                    <div class="menu-item" data-id="2" draggable="true">
+                        <div class="drag-handle">
+                            <i class="fas fa-grip-vertical"></i>
+                        </div>
+                        <div class="menu-item-image">
+                            <div class="menu-item-image-placeholder">
+                                D
+                            </div>
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h4 class="item-name">Doro Wat</h4>
+                                <span class="item-price">320 ETB</span>
+                            </div>
+                            <p class="item-description">Spicy chicken stew with boiled eggs, served with injera.</p>
+                            <div class="item-details">
+                                <span class="item-category">
+                                <i class="fas fa-tag"></i> Main Dish
+                            </span>
+                                <div class="item-status">
+                                    <label class="status-toggle">
+                                    <input type="checkbox" checked onchange="toggleItemStatus('2', this.checked)">
+                                    <span class="status-slider"></span>
+                                </label>
+                                    <span style="color: #4caf50; font-weight: 500;">Active</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="menu-item-actions">
+                            <button class="action-btn edit-btn" onclick="editItem('2')">
+                            <i class="fas fa-edit"></i>
+                            Edit
+                        </button>
+                            <button class="action-btn delete-btn" onclick="deleteItem('2')">
+                            <i class="fas fa-trash"></i>
+                            Delete
+                        </button>
+                            <input type="checkbox" class="item-checkbox" style="margin-left: 10px;" onchange="updateBulkActions()">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Example Drinks Category -->
+            <div class="category-section">
+                <div class="category-header">
+                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                        <h3 class="category-title">
+                            <i class="fas fa-glass-cheers"></i> Drinks
+                        </h3>
+                        <span class="category-count">6 items</span>
+                    </div>
+                </div>
+                <div class="menu-items">
+                    <div class="menu-item" data-id="3" draggable="true">
+                        <div class="drag-handle">
+                            <i class="fas fa-grip-vertical"></i>
+                        </div>
+                        <div class="menu-item-image">
+                            <div class="menu-item-image-placeholder">
+                                C
+                            </div>
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h4 class="item-name">Coca Cola</h4>
+                                <span class="item-price">50 ETB</span>
+                            </div>
+                            <p class="item-description">500ml bottle</p>
+                            <div class="item-details">
+                                <span class="item-category">
+                                <i class="fas fa-tag"></i> Drinks
+                            </span>
+                                <div class="item-status">
+                                    <label class="status-toggle">
+                                    <input type="checkbox" checked onchange="toggleItemStatus('3', this.checked)">
+                                    <span class="status-slider"></span>
+                                </label>
+                                    <span style="color: #4caf50; font-weight: 500;">Active</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="menu-item-actions">
+                            <button class="action-btn edit-btn" onclick="editItem('3')">
+                            <i class="fas fa-edit"></i>
+                            Edit
+                        </button>
+                            <button class="action-btn delete-btn" onclick="deleteItem('3')">
+                            <i class="fas fa-trash"></i>
+                            Delete
+                        </button>
+                            <input type="checkbox" class="item-checkbox" style="margin-left: 10px;" onchange="updateBulkActions()">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Empty State -->
+        <div id="emptyMenu" class="empty-state" style="display: none;">
+            <div class="empty-icon">
+                <i class="fas fa-utensils"></i>
+            </div>
+            <h3>Menu is Empty</h3>
+            <p>Start by adding your first menu item using the form above.</p>
+        </div>
+
+        <!-- Loading State -->
+        <div id="loading" class="loading-state" style="display: none;">
+            <div class="loading-spinner"></div>
+            <p>Loading menu items...</p>
+        </div>
+
+        <!-- Edit Modal -->
+        <div class="edit-modal" id="editModal">
+            <div class="edit-modal-content">
+                <div class="edit-modal-header">
+                    <h3>Edit Menu Item</h3>
+                    <button class="close-modal" onclick="closeEditModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+                </div>
+                <div class="menu-form" style="background: none; border: none; padding: 0; margin: 0;">
+                    <div class="form-group">
+                        <label for="editItemName">Item Name</label>
+                        <input type="text" id="editItemName" />
+                    </div>
+                    <div class="form-group">
+                        <label for="editItemPrice">Price (ETB)</label>
+                        <input type="number" id="editItemPrice" min="0" step="0.01" />
+                    </div>
+                    <div class="form-group">
+                        <label for="editItemCategory">Category</label>
+                        <select id="editItemCategory">
+                        <option value="mains">Main Dishes</option>
+                        <option value="sides">Side Dishes</option>
+                        <option value="appetizers">Appetizers</option>
+                        <option value="drinks">Drinks</option>
+                        <option value="desserts">Desserts</option>
+                    </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="editItemDescription">Description</label>
+                        <textarea id="editItemDescription" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="editItemStatus">Status</label>
+                        <select id="editItemStatus">
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+                    </div>
+                    <div style="display: flex; gap: 15px; margin-top: 20px;">
+                        <button onclick="saveEdit()" style="flex: 1;">
+                        <i class="fas fa-save"></i>
+                        Save Changes
+                    </button>
+                        <button onclick="closeEditModal()" style="background: #666;">
+                        <i class="fas fa-times"></i>
+                        Cancel
+                    </button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div id="menuItems" class="menu-list"></div>
-  </div>
 
-  <script src="js/firebase.js" type="module"></script>
-  <script src="js/restaurant-menu.js" type="module"></script>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="footer">
+        <div class="container footer-grid">
+
+            <div>
+                <h4>Customers</h4>
+                <a href="restaurant-dashboard.html">Browse Restaurants</a>
+                <a href="#">Deals & Offers</a>
+                <a href="#">FAQ</a>
+                <a href="#">Contact Support</a>
+            </div>
+
+            <div>
+                <h4>Restaurants</h4>
+                <a href="#">Partner With Us</a>
+                <a href="#">Restaurant Login</a>
+                <a href="#">Benefits</a>
+            </div>
+
+            <div>
+                <h4>Company</h4>
+                <a href="#">About GurshaGo</a>
+                <a href="#">Careers</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 GurshaGo. All rights reserved.</p>
+
+            <div class="social-icons">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="js/firebase.js" type="module"></script>
+    <script src="js/restaurant-menu.js" type="module"></script>
 </body>
+
 </html>

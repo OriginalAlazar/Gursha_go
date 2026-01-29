@@ -1,68 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <title>Home | GurshaGO</title>
-  <link rel="stylesheet" href="css/style.css" />
-
-  <style>
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-    }
-
-    .restaurant-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 15px;
-    }
-
-    .restaurant-card {
-      border: 1px solid #ddd;
-      padding: 10px;
-      border-radius: 6px;
-      background: #fff;
-    }
-
-    .restaurant-card h4 {
-      margin: 5px 0;
-    }
-
-    .restaurant-card button {
-      margin-top: 10px;
-    }
-
-    .footer-nav {
-      display: flex;
-      justify-content: space-around;
-      margin-top: 25px;
-      font-size: 14px;
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <title>Home | GurshaGO</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
+
 <body>
 
-  <div class="auth-container" style="max-width: 900px;">
-    <div class="header">
-      <h2>Welcome 👋</h2>
-      <div>🛒 Cart (0)</div>
+    <!-- ================= HEADER ================= -->
+    <header class="header">
+        <div class="container header-inner">
+
+            <!-- Logo -->
+            <span class="logo-name">GurshaGo</span>
+
+            <!-- Navigation -->
+            <nav class="nav">
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                <a href="" class="red" style="background-color: red;"></a>
+                <a href="index.html" class="active">Home</a>
+                <a href="restaurant-dashboard.html">Restaurants</a>
+            </nav>
+
+            <!-- Search -->
+            <div class="search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Search restaurants..." />
+            </div>
+
+            <!-- Actions -->
+            <div class="actions">
+                <a href="login.html" class="login-btn">
+                    <i class="fa-solid fa-right-to-bracket"></i> Login
+                </a>
+
+                <a href="cart.html" class="cart-btn">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80" alt="Delicious food delivery">
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Craving Something Delicious?</h1>
+                <p class="hero-subtitle">Discover the best food in your city. Fast delivery to your door.</p>
+                <div class="hero-search">
+                    <div class="search-container">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" class="search-input" placeholder="What are you craving for?" id="heroSearch">
+                        <button class="btn btn-white search-btn" id="heroSearchBtn">
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <div id="restaurantList" class="restaurant-grid">
+
     </div>
 
-    <input type="text" placeholder="Search restaurants..." />
+    <!-- ================= FOOTER ================= -->
+    <footer class="footer">
+        <div class="container footer-grid">
 
-    <div id="restaurantList" class="restaurant-grid"></div>
+            <div>
+                <h4>Customers</h4>
+                <a href="restaurant-dashboard.html">Browse Restaurants</a>
+                <a href="#">Deals & Offers</a>
+                <a href="#">FAQ</a>
+                <a href="#">Contact Support</a>
+            </div>
 
-    <div class="footer-nav">
-      <a href="home.html">Home</a>
-      <a href="orders.html">Orders</a>
-      <a href="cart.html">Cart</a>
-      <a href="login.html">Logout</a>
-    </div>
-  </div>
+            <div>
+                <h4>Restaurants</h4>
+                <a href="#">Partner With Us</a>
+                <a href="#">Restaurant Login</a>
+                <a href="#">Benefits</a>
+            </div>
 
-<script src="js/firebase.js" type="module"></script>
-<script src="js/home.js" type="module"></script>
+            <div>
+                <h4>Company</h4>
+                <a href="#">About GurshaGo</a>
+                <a href="#">Careers</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 GurshaGo. All rights reserved.</p>
+
+            <div class="social-icons">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/firebase.js" type="module"></script>
+    <script src="js/home.js" type="module"></script>
 </body>
+
 </html>

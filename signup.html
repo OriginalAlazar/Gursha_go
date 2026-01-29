@@ -1,43 +1,702 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <title>Sign Up | GurshaGO</title>
-  <link rel="stylesheet" href="css/style.css" />
+    <meta charset="UTF-8" />
+    <title>Sign Up | GurshaGO</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* ===== SIGNUP PAGE SPECIFIC STYLES ===== */
+        
+        .auth-container {
+            max-width: 450px;
+            /* Slightly wider for better layout */
+            margin: 60px auto;
+            padding: 40px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(255, 0, 0, 0.1);
+            border: 2px solid rgba(255, 0, 0, 0.1);
+            text-align: center;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .auth-container h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #333;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .auth-container>p {
+            color: #666;
+            font-size: 1rem;
+            margin-bottom: 30px;
+            line-height: 1.5;
+            text-align: center;
+        }
+        /* ===== FORM INPUTS ===== */
+        
+        .auth-container input[type="text"],
+        .auth-container input[type="email"],
+        .auth-container input[type="password"] {
+            width: 100%;
+            padding: 16px 20px;
+            margin-bottom: 20px;
+            border: 2px solid #eee;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+            color: #333;
+            text-align: left;
+            box-sizing: border-box;
+            /* Important for consistent width */
+        }
+        
+        .auth-container input::placeholder {
+            color: #999;
+            font-weight: 400;
+        }
+        
+        .auth-container input:focus {
+            outline: none;
+            border-color: #ff0000;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(255, 0, 0, 0.1);
+        }
+        /* ===== LABEL STYLES ===== */
+        
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            text-align: left;
+        }
+        /* ===== PASSWORD REQUIREMENTS ===== */
+        
+        .password-requirements {
+            background: #f8f9fa;
+            border: 2px solid #eee;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: left;
+        }
+        
+        .password-requirements h4 {
+            color: #333;
+            margin: 0 0 15px 0;
+            font-size: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-align: left;
+        }
+        
+        .password-requirements h4 i {
+            font-size: 1rem;
+        }
+        
+        .password-requirements ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: left;
+        }
+        
+        .password-requirements li {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: color 0.3s ease;
+            text-align: left;
+        }
+        
+        .password-requirements li i {
+            font-size: 0.8rem;
+            width: 16px;
+            text-align: center;
+        }
+        
+        .password-requirements li.valid {
+            color: #4caf50;
+        }
+        
+        .password-requirements li.invalid {
+            color: #f44336;
+        }
+        /* ===== ROLE SELECTION ===== */
+        
+        .role-group {
+            background: #f8f9fa;
+            border: 2px solid #eee;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            text-align: left;
+        }
+        
+        .role-group h4 {
+            color: #333;
+            margin: 0 0 10px 0;
+            font-size: 1rem;
+            font-weight: 600;
+            text-align: left;
+        }
+        
+        .role-group label {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            cursor: pointer;
+            padding: 12px 15px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            color: #333;
+            font-weight: 500;
+            text-align: left;
+        }
+        
+        .role-group label:hover {
+            background: rgba(255, 0, 0, 0.05);
+        }
+        
+        .role-group input[type="radio"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #ff0000;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        
+        .role-option-content {
+            flex: 1;
+            text-align: left;
+        }
+        
+        .role-option-content strong {
+            display: block;
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+        
+        .role-option-content div {
+            font-size: 0.85rem;
+            color: #666;
+            line-height: 1.4;
+        }
+        /* ===== TERMS AND CONDITIONS ===== */
+        
+        .terms-agreement {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin: 25px 0;
+            text-align: left;
+        }
+        
+        .terms-agreement input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #ff0000;
+            flex-shrink: 0;
+        }
+        
+        .terms-agreement label {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            cursor: pointer;
+            flex: 1;
+            text-align: left;
+        }
+        
+        .terms-agreement a {
+            color: #ff0000;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .terms-agreement a:hover {
+            color: #cc0000;
+            text-decoration: underline;
+        }
+        /* ===== BUTTONS ===== */
+        
+        .auth-container button:not(.password-toggle) {
+            width: 100%;
+            padding: 16px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .auth-container button:first-of-type:not(.password-toggle) {
+            background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+            color: white;
+            margin-top: 10px;
+        }
+        
+        .auth-container button:first-of-type:not(.password-toggle):hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 0, 0, 0.3);
+        }
+        
+        .auth-container button:first-of-type:not(.password-toggle):active {
+            transform: translateY(-1px);
+        }
+        
+        .google-btn {
+            background: white !important;
+            color: #333 !important;
+            border: 2px solid #eee !important;
+        }
+        
+        .google-btn:hover {
+            background: #f8f9fa !important;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1) !important;
+            border-color: #ddd !important;
+        }
+        
+        .google-btn:active {
+            transform: translateY(-1px);
+        }
+        /* ===== ERROR MESSAGES ===== */
+        
+        .error {
+            background: #ffebee;
+            color: #d32f2f;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-size: 0.95rem;
+            display: none;
+            border: 2px solid #ffcdd2;
+            text-align: left;
+        }
+        
+        .error.show {
+            display: block;
+            animation: shake 0.5s ease;
+        }
+        
+        @keyframes shake {
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+            10%,
+            30%,
+            50%,
+            70%,
+            90% {
+                transform: translateX(-5px);
+            }
+            20%,
+            40%,
+            60%,
+            80% {
+                transform: translateX(5px);
+            }
+        }
+        /* ===== AUTH LINKS ===== */
+        
+        .auth-links {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            text-align: center;
+        }
+        
+        .auth-links p {
+            color: #666;
+            font-size: 0.95rem;
+            margin: 0;
+        }
+        
+        .auth-links a {
+            color: #ff0000;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .auth-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #ff0000;
+            transition: width 0.3s ease;
+        }
+        
+        .auth-links a:hover::after {
+            width: 100%;
+        }
+        
+        .auth-links a:hover {
+            color: #cc0000;
+        }
+        /* ===== PASSWORD INPUT CONTAINER ===== */
+        
+        .password-input-container {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        
+        .password-toggle {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #666;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .password-toggle:hover {
+            background: #f0f0f0;
+            color: #ff0000;
+        }
+        /* ===== OR DIVIDER ===== */
+        
+        .or-divider {
+            display: flex;
+            align-items: center;
+            margin: 25px 0;
+            color: #999;
+            font-size: 0.9rem;
+        }
+        
+        .or-divider::before,
+        .or-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #eee;
+        }
+        
+        .or-divider span {
+            padding: 0 15px;
+            background: white;
+        }
+        /* ===== RESPONSIVE DESIGN ===== */
+        
+        @media (max-width: 768px) {
+            .auth-container {
+                margin: 40px 20px;
+                padding: 30px 25px;
+                margin-top: 60px;
+                width: calc(100% - 40px);
+            }
+            .auth-container h2 {
+                font-size: 1.8rem;
+            }
+            .auth-container input,
+            .auth-container button:not(.password-toggle) {
+                padding: 14px 18px;
+            }
+            .role-group,
+            .password-requirements {
+                padding: 15px;
+            }
+            .role-group label {
+                padding: 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .auth-container {
+                margin: 30px 15px;
+                padding: 25px 20px;
+                width: calc(100% - 30px);
+            }
+            .auth-container h2 {
+                font-size: 1.6rem;
+            }
+            .auth-container>p {
+                font-size: 0.95rem;
+            }
+            .auth-links p {
+                font-size: 0.9rem;
+            }
+            .terms-agreement label {
+                font-size: 0.85rem;
+            }
+        }
+        /* ===== LOADING STATE ===== */
+        
+        .auth-container button.loading {
+            position: relative;
+            color: transparent;
+        }
+        
+        .auth-container button.loading::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 2px solid white;
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .google-btn.loading::after {
+            border-color: #333;
+            border-top-color: transparent;
+        }
+    </style>
 </head>
+
 <body>
+    <!-- ================= HEADER ================= -->
+    <header class="header">
+        <div class="container header-inner">
 
-  <div class="auth-container">
-    <h2>Create Account</h2>
+            <!-- Logo -->
+            <span class="logo-name">GurshaGo</span>
 
-    <input type="text" id="name" placeholder="Full Name" />
-    <input type="email" id="email" placeholder="Email" />
-    <input type="password" id="password" placeholder="Password" />
-    <input type="password" id="confirmPassword" placeholder="Confirm Password" />
+            <!-- Navigation -->
+            <nav class="nav">
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                <a href="" class="red" style="background-color: red;"></a>
+                <a href="index.html" class="active">Home</a>
+                <a href="restaurant-dashboard.html">Restaurants</a>
+            </nav>
 
-    <div class="role-group">
-      <label>
-        <input type="radio" name="role" value="customer" checked />
-        Customer
-      </label>
-      <label>
-        <input type="radio" name="role" value="restaurant" />
-        Restaurant Owner
-      </label>
+            <!-- Search -->
+            <div class="search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Search restaurants..." />
+            </div>
+
+            <!-- Actions -->
+            <div class="actions">
+                <a href="login.html" class="login-btn">
+                    <i class="fa-solid fa-right-to-bracket"></i> Login
+                </a>
+
+                <a href="cart.html" class="cart-btn">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+
+        </div>
+    </header>
+
+
+    <div class="auth-container">
+        <h2>Create Account</h2>
+        <p>Join GurshaGO to discover amazing restaurants and order your favorite food!</p>
+
+        <!-- Name Input -->
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="Your full name" />
+        </div>
+
+        <!-- Email Input -->
+        <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" id="email" placeholder="you@example.com" />
+        </div>
+
+        <!-- Password Input -->
+        <div class="form-group">
+            <label for="password">Password</label>
+            <div class="password-input-container">
+                <input type="password" id="password" placeholder="Create a password" />
+                <button type="button" class="password-toggle" id="passwordToggle">
+                <i class="fas fa-eye"></i>
+            </button>
+            </div>
+        </div>
+
+        <!-- Confirm Password Input -->
+        <div class="form-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <div class="password-input-container">
+                <input type="password" id="confirmPassword" placeholder="Confirm your password" />
+                <button type="button" class="password-toggle" id="confirmPasswordToggle">
+                <i class="fas fa-eye"></i>
+            </button>
+            </div>
+        </div>
+
+        <!-- Password Requirements -->
+        <div class="password-requirements">
+            <h4><i class="fas fa-shield-alt"></i> Password Requirements</h4>
+            <ul>
+                <li id="req-length"><i class="fas fa-circle"></i> At least 8 characters</li>
+                <li id="req-uppercase"><i class="fas fa-circle"></i> One uppercase letter</li>
+                <li id="req-lowercase"><i class="fas fa-circle"></i> One lowercase letter</li>
+                <li id="req-number"><i class="fas fa-circle"></i> One number</li>
+                <li id="req-special"><i class="fas fa-circle"></i> One special character</li>
+            </ul>
+        </div>
+
+        <!-- Role Selection -->
+        <div class="role-group">
+            <h4>Account Type</h4>
+            <label>
+            <input type="radio" name="role" value="customer" checked />
+            <div class="role-option-content">
+                <strong>Customer</strong>
+                <div>Order food from restaurants</div>
+            </div>
+        </label>
+            <label>
+            <input type="radio" name="role" value="restaurant" />
+            <div class="role-option-content">
+                <strong>Restaurant Owner</strong>
+                <div>Manage your restaurant and orders</div>
+            </div>
+        </label>
+        </div>
+
+        <!-- Terms Agreement -->
+        <div class="terms-agreement">
+            <input type="checkbox" id="terms" />
+            <label for="terms">
+            I agree to the <a href="terms.html">Terms of Service</a> and <a href="privacy.html">Privacy Policy</a>
+        </label>
+        </div>
+
+        <!-- Sign Up Button -->
+        <button onclick="signup()" id="signupBtn">
+        <i class="fas fa-user-plus"></i>
+        Create Account
+    </button>
+
+        <!-- Divider -->
+        <div class="or-divider">
+            <span>or sign up with</span>
+        </div>
+
+        <!-- Google Sign Up -->
+        <button class="google-btn" onclick="googleSignup()" id="googleBtn">
+        <i class="fab fa-google"></i>
+        Sign up with Google
+    </button>
+
+        <!-- Error Message -->
+        <div id="error" class="error"></div>
+
+        <!-- Success Message -->
+        <div id="success" class="success-message"></div>
+
+        <!-- Login Link -->
+        <div class="auth-links">
+            <p>Already have an account? <a href="login.html">Login here</a></p>
+        </div>
     </div>
 
-    <button onclick="signup()">Sign Up</button>
-    <button class="google-btn" onclick="googleLogin()">Sign up with Google</button>
 
-    <div id="error" class="error"></div>
+    <!-- ================= FOOTER ================= -->
+    <footer class="footer">
+        <div class="container footer-grid">
 
-    <div class="auth-links">
-      <p>Already have an account? <a href="login.html">Login</a></p>
-    </div>
-  </div>
+            <div>
+                <h4>Customers</h4>
+                <a href="restaurant-dashboard.html">Browse Restaurants</a>
+                <a href="#">Deals & Offers</a>
+                <a href="#">FAQ</a>
+                <a href="#">Contact Support</a>
+            </div>
 
-  <!-- Firebase -->
-  <script src="js/firebase.js" type="module"></script>
-  <script src="js/auth.js" type="module"></script>
+            <div>
+                <h4>Restaurants</h4>
+                <a href="#">Partner With Us</a>
+                <a href="#">Restaurant Login</a>
+                <a href="#">Benefits</a>
+            </div>
+
+            <div>
+                <h4>Company</h4>
+                <a href="#">About GurshaGo</a>
+                <a href="#">Careers</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 GurshaGo. All rights reserved.</p>
+
+            <div class="social-icons">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Firebase -->
+    <script src="js/firebase.js" type="module"></script>
+    <script src="js/auth.js" type="module"></script>
 </body>
+
 </html>
