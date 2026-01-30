@@ -1,0 +1,652 @@
+        .landing::after {
+            content: '🍕 🍔 🍣 🍜 🥗 🍦';
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 1.5rem;
+            color: var(--ethiopian-black);
+            animation: scroll 30s linear infinite;
+            white-space: nowrap;
+        }
+        /* ===== LANDING PAGE STYLES ===== */
+        
+        .landing {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 40px;
+            text-align: center;
+            background: var(--ethiopian-gray);
+            border-radius: 30px;
+            box-shadow: 0 20px 60px var(--ethiopian-yellow);
+            border: 3px solid var(--ethiopian-black);
+            animation: fadeIn 1s ease;
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+        
+        .landing::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 10px;
+            background: linear-gradient(to right, var(--ethiopian-green), var(--ethiopian-yellow), var(--ethiopian-red));
+            z-index: 1;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .landing h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            color: var(--ethiopian-yellow);
+            margin-bottom: 15px;
+            line-height: 1;
+            text-shadow: 2px 2px 4px var(--ethiopian-green);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .landing h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 5px;
+            background: linear-gradient(to right, var(--ethiopian-green), var(--ethiopian-yellow), var(--ethiopian-red));
+            border-radius: 3px;
+        }
+        
+        .landing p {
+            font-size: 1.8rem;
+            color: var(--ethiopian-yellow);
+            margin-bottom: 50px;
+            font-weight: 400;
+            line-height: 1.4;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        /* ===== ACTION BUTTONS ===== */
+        
+        .landing-buttons {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+        }
+        
+        .landing button {
+            padding: 22px 50px;
+            border: none;
+            border-radius: 20px;
+            font-size: 1.4rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            min-width: 280px;
+        }
+        
+        .landing button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, var(--ethiopian-yellow), transparent);
+            transition: 0.5s;
+        }
+        
+        .landing button:hover::before {
+            left: 100%;
+        }
+        
+        .landing button:first-of-type {
+            background: linear-gradient(135deg, var(--ethiopian-green));
+            color: var(--ethiopian-yellow);
+            box-shadow: 0 10px 30px var(--ethiopian-yellow);
+        }
+        
+        .landing button:first-of-type:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 20px 40px var(--ethiopian-red);
+        }
+        
+        .landing button:last-of-type {
+            background: var(--ethiopian-green);
+            color: var(--ethiopian-yellow);
+            border: 3px solid var(--ethiopian-green);
+            box-shadow: 0 10px 30px var(--ethiopian-yellow);
+        }
+        
+        .landing button:last-of-type:hover {
+            background: linear-gradient(135deg, var(--ethiopian-green), var(--ethiopian-yellow));
+            color: var(--ethiopian-yellow);
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 20px 40px var(--ethiopian-red);
+        }
+        
+        .landing button i {
+            font-size: 1.6rem;
+        }
+        /* ===== HOW IT WORKS SECTION ===== */
+        
+        .how-it-works {
+            margin-top: 60px;
+            padding-top: 50px;
+            border-top: 2px solid #eee;
+        }
+        
+        .how-it-works h2 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--ethiopian-yellow);
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .how-it-works h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, var(--ethiopian-green), var(--ethiopian-yellow), var(--ethiopian-red));
+            border-radius: 2px;
+        }
+        /* Steps Container */
+        
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        /* Customer Steps */
+        
+        .customer-steps,
+        .restaurant-steps {
+            background: var(--ethiopian-gray);
+            border-radius: 25px;
+            padding: 40px 30px;
+            border: 2px solid var(--ethiopian-yellow);
+            transition: all 0.3s ease;
+        }
+        
+        .customer-steps:hover,
+        .restaurant-steps:hover {
+            border-color: var(--ethiopian-yellow);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px var(--ethiopian-yellow);
+        }
+        
+        .customer-steps h3,
+        .restaurant-steps h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--ethiopian-yellow);
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+        
+        .customer-steps h3 {
+            color: var(--ethiopian-green);
+        }
+        
+        .restaurant-steps h3 {
+            color: var(--ethiopian-red);
+        }
+        /* Steps List */
+        
+        .steps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            text-align: left;
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--ethiopian-green), var(--ethiopian-yellow));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+        
+        .restaurant-steps .step-number {
+            background: linear-gradient(135deg, var(--ethiopian-red), var(--ethiopian-yellow));
+        }
+        
+        .step-content h4 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--ethiopian-yellow);
+            margin-bottom: 8px;
+        }
+        
+        .step-content p {
+            color: var(--ethiopian-white);
+            font-size: 1rem;
+            line-height: 1.5;
+            margin: 0;
+        }
+        /* ===== FEATURES SECTION ===== */
+        
+        .features-section {
+            margin-top: 80px;
+            padding-top: 60px;
+            border-top: 2px solid #eee;
+        }
+        
+        .features-section h2 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--ethiopian-yellow);
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .features-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, var(--ethiopian-green), var(--ethiopian-yellow), var(--ethiopian-red));
+            border-radius: 2px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: var(--ethiopian-gray);
+            border: 2px solid var(--ethiopian-yellow);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            border-color: var(--ethiopian-red);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px var(--ethiopian-yellow);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--ethiopian-green), var(--ethiopian-yellow));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            color: var(--ethiopian-black);
+            font-size: 2.5rem;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--ethiopian-yellow);
+            margin-bottom: 15px;
+        }
+        
+        .feature-card p {
+            color: var(--ethiopian-white);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+        /* ===== CTA SECTION ===== */
+        
+        .cta-section {
+            margin-top: 80px;
+            padding: 60px 40px;
+            background: linear-gradient(135deg, var(--ethiopian-gray));
+            border-radius: 30px;
+            border: 2px solid var(--ethiopian-yellow);
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--ethiopian-yellow);
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            font-size: 1.3rem;
+            color: var(--ethiopian-white);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .cta-btn {
+            padding: 20px 40px;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .cta-btn.primary {
+            background: linear-gradient(135deg, var(--ethiopian-green), var(--ethiopian-red));
+            color: var(--ethiopian-yellow);
+        }
+        
+        .cta-btn.primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px var(--ethiopian-yellow);
+        }
+        
+        .cta-btn.secondary {
+            background: var(--ethiopian-gray);
+            color: var(--ethiopian-yellow);
+            border: 2px solid var(--ethiopian-yellow);
+        }
+        
+        .cta-btn.secondary:hover {
+            background: var(--ethiopian-yellow);
+            color: var(--ethiopian-black);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px var(--ethiopian-yellow);
+        }
+        /* ===== STATS SECTION ===== */
+        
+        .stats-section {
+            margin-top: 80px;
+            padding: 40px;
+            background: linear-gradient(135deg, var(--ethiopian-gray));
+            border: 2px solid var(--ethiopian-yellow);
+            border-radius: 30px;
+            color: var(--ethiopian-yellow);
+            text-align: center;
+        }
+        
+        .stats-section h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 50px;
+            color: var(--ethiopian-yellow);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+        
+        .stat-item {
+            padding: 30px;
+        }
+        
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+            line-height: 1;
+        }
+        
+        .stat-label {
+            font-size: 1.2rem;
+            font-weight: 600;
+            opacity: 0.9;
+        }
+        /* ===== RESPONSIVE DESIGN ===== */
+        
+        @media (max-width: 992px) {
+            .landing {
+                margin: 60px 20px;
+                padding: 50px 30px;
+            }
+            .landing h1 {
+                font-size: 4rem;
+            }
+            .landing p {
+                font-size: 1.6rem;
+            }
+            .landing button {
+                min-width: 250px;
+                padding: 20px 40px;
+            }
+            .how-it-works h2,
+            .features-section h2,
+            .cta-section h2 {
+                font-size: 2.5rem;
+            }
+            .steps-container {
+                grid-template-columns: 1fr;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .landing {
+                padding: 40px 25px;
+                margin-top: 40px;
+            }
+            .landing h1 {
+                font-size: 3.5rem;
+            }
+            .landing p {
+                font-size: 1.4rem;
+            }
+            .landing-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .landing button {
+                width: 100%;
+                max-width: 350px;
+                padding: 20px;
+            }
+            .how-it-works h2,
+            .features-section h2,
+            .cta-section h2 {
+                font-size: 2.2rem;
+            }
+            .customer-steps,
+            .restaurant-steps {
+                padding: 30px 25px;
+            }
+            .step-item {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 15px;
+            }
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .cta-btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            .stat-number {
+                font-size: 3rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .landing {
+                padding: 30px 20px;
+                margin: 30px 15px;
+                border-radius: 20px;
+            }
+            .landing h1 {
+                font-size: 2.8rem;
+            }
+            .landing p {
+                font-size: 1.2rem;
+            }
+            .landing button {
+                font-size: 1.2rem;
+                padding: 18px;
+            }
+            .how-it-works h2,
+            .features-section h2,
+            .cta-section h2 {
+                font-size: 1.8rem;
+            }
+            .customer-steps h3,
+            .restaurant-steps h3 {
+                font-size: 1.6rem;
+            }
+            .step-number {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            .step-content h4 {
+                font-size: 1.1rem;
+            }
+            .feature-card {
+                padding: 30px 20px;
+            }
+            .feature-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 2rem;
+            }
+            .feature-card h3 {
+                font-size: 1.3rem;
+            }
+            .cta-section {
+                padding: 40px 25px;
+            }
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+            .cta-section p {
+                font-size: 1.1rem;
+            }
+            .stats-section {
+                padding: 30px 20px;
+            }
+            .stats-section h2 {
+                font-size: 2rem;
+            }
+            .stat-number {
+                font-size: 2.5rem;
+            }
+        }
+        /* ===== ANIMATIONS ===== */
+        
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        .landing h1 {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .feature-card:hover .feature-icon {
+            animation: float 1s ease-in-out;
+        }
+        /* ===== DECORATIVE ELEMENTS ===== */
+        
+        .food-emoji {
+            font-size: 1.5em;
+            margin: 0 5px;
+            animation: spin 20s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
+        @keyframes scroll {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }

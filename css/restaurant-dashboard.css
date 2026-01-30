@@ -1,0 +1,848 @@
+        /* ===== RESTAURANT SELECTION DASHBOARD ===== */
+        
+        .restaurant-dashboard {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 40px;
+            background: var(--ethiopian-gray);
+            border-radius: 30px;
+            box-shadow: 0 20px 60px var(--ethiopian-yellow);
+            border: 3px solid var(--ethiopian-black);
+            animation: fadeIn 0.8s ease;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .dashboard-header {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .dashboard-header h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--ethiopian-yellow);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dashboard-header h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 400px;
+            height: 5px;
+            background: linear-gradient(to right,var(--ethiopian-green), var(--ethiopian-yellow), var(--ethiopian-red));
+            border-radius: 3px;
+        }
+        
+        .dashboard-header p {
+            font-size: 1.4rem;
+            color: var(--ethiopian-white);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        /* ===== SEARCH AND FILTER ===== */
+        
+        .dashboard-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            padding: 25px;
+            background: var(--ethiopian-black);
+            border-radius: 20px;
+            border: 2px solid var(--ethiopian-yellow);
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .search-container {
+            position: relative;
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .search-container i {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--ethiopian-yellow);
+            font-size: 1.2rem;
+        }
+        
+        .search-container input {
+            width: 100%;
+            padding: 16px 20px 16px 50px;
+            border: 2px solid var(--ethiopian-yellow);
+            border-radius: 15px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            background: var(--ethiopian-gray);        }
+        
+        .search-container input:focus {
+            outline: none;
+            border-color: var(--ethiopian-red);
+            box-shadow: 0 0 0 4px var(--ethiopian-yellow);
+        }
+        
+        .filter-options {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 12px 25px;
+            border: 2px solid var(--ethiopian-yellow);
+            background: var(--ethiopian-gray);
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--ethiopian-white);
+            font-size: 1rem;
+        }
+        
+        .filter-btn:hover {
+            border-color: var(--ethiopian-green);
+            color: var(--ethiopian-red);
+            transform: translateY(-2px);
+        }
+        
+        .filter-btn.active {
+            background: linear-gradient(135deg, var(--ethiopian-green));
+            color: var(--ethiopian-white);
+            border-color: var(--ethiopian-yellow);
+            box-shadow: 0 5px 15px var(--ethiopian-green);
+        }
+        /* ===== FEATURED RESTAURANTS ===== */
+        
+        .featured-section {
+            margin-bottom: 60px;
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid var(--ethiopian-yellow);
+        }
+        
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--ethiopian-yellow);
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .section-title i {
+            color: var(--ethiopian-red);
+            font-size: 2rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -23px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--ethiopian-green);
+            border-radius: 2px;
+        }
+        
+        .view-all {
+            color: var(--ethiopian-red);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .view-all:hover {
+            transform: translateX(5px);
+            color: var(--ethiopian-green);
+        }
+        /* Featured Restaurants Carousel */
+        
+        .featured-carousel {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .featured-restaurant {
+            background: var(--ethiopian-gray);
+            border: 3px solid var(--ethiopian-yellow);
+            border-radius: 25px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            position: relative;
+            box-shadow: 0 15px 40px var(--ethiopian-yellow);
+        }
+        
+        .featured-restaurant:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px var(--ethiopian-green);
+        }
+        
+        .featured-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(135deg, var(--ethiopian-green), var(--ethiopian-yellow));
+            color: var(--ethiopian-black);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            z-index: 2;
+            box-shadow: 0 4px 15px var(--ethiopian-red);
+        }
+        
+        .featured-image {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .featured-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .featured-restaurant:hover .featured-image img {
+            transform: scale(1.1);
+        }
+        
+        .featured-content {
+            padding: 25px;
+        }
+        
+        .featured-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .featured-name {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--ethiopian-yellow);
+            margin: 0;
+        }
+        
+        .featured-rating {
+            background: var(--ethiopian-yellow);
+            color: var(--ethiopian-black);
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 1.1rem;
+        }
+        
+        .featured-cuisine {
+            color: var(--ethiopian-yellow);
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .featured-cuisine i {
+            color: var(--ethiopian-red);
+        }
+        
+        .featured-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid var(--ethiopian-red);
+        }
+        
+        .featured-delivery {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--ethiopian-yellow);
+            font-weight: 500;
+        }
+        
+        .featured-delivery i {
+            color: var(--ethiopian-green);
+        }
+        
+        .featured-price {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--ethiopian-yellow);
+        }
+        
+        .featured-btn {
+            width: 100%;
+            padding: 16px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.2rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, var(--ethiopian-red), var(--ethiopian-yellow));
+            color: var(--ethiopian-black);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+        
+        .featured-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px var(--ethiopian-green);
+        }
+        /* ===== ALL RESTAURANTS ===== */
+        
+        .all-restaurants-section {
+            margin-top: 60px;
+        }
+        
+        .restaurants-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        /* Restaurant Card */
+        
+        .restaurant-card {
+            background: var(--ethiopian-gray);
+            border: 2px solid var(--ethiopian-yellow);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .restaurant-card:hover {
+            border-color: var(--ethiopian-yellow);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px var(--ethiopian-green);
+        }
+        
+        .restaurant-status {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            z-index: 2;
+            box-shadow: 0 3px 10px var(--ethiopian-black);
+        }
+        
+        .status-open {
+            background: var(--ethiopian-green);
+            color: var(--ethiopian-white);
+        }
+        
+        .status-closed {
+            background: var(--ethiopian-red);
+            color: var(--ethiopian-white);
+        }
+        
+        .restaurant-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .restaurant-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .restaurant-card:hover .restaurant-image img {
+            transform: scale(1.1);
+        }
+        
+        .restaurant-image-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--ethiopian-yellow), var(--ethiopian-red));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--ethiopian-black);
+            font-size: 3rem;
+            font-weight: bold;
+        }
+        
+        .restaurant-content {
+            padding: 25px;
+        }
+        
+        .restaurant-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .restaurant-name {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--ethiopian-yellow);
+            margin: 0;
+            line-height: 1.3;
+        }
+        
+        .restaurant-rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            background: var(--ethiopian-black);
+            padding: 5px 12px;
+            border-radius: 20px;
+        }
+        
+        .restaurant-rating .stars {
+            color: var(--ethiopian-yellow);
+            font-size: 1rem;
+        }
+        
+        .restaurant-rating .value {
+            font-weight: 700;
+            color: var(--ethiopian-white);
+        }
+        
+        .restaurant-cuisine {
+            color: var(--ethiopian-yellow);
+            font-size: 1rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .restaurant-cuisine i {
+            color: var(--ethiopian-red);
+            font-size: 0.9rem;
+        }
+        
+        .restaurant-description {
+            color: var(--ethiopian-white);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        
+        .restaurant-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 20px;
+            border-top: 2px solid var(--ethiopian-red);
+        }
+        
+        .restaurant-delivery {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .delivery-time {
+            font-weight: 600;
+            color: var(--ethiopian-yellow);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .delivery-time i {
+            color: var(--ethiopian-green);
+        }
+        
+        .delivery-fee {
+            color: var(--ethiopian-white);
+            font-size: 0.9rem;
+        }
+        
+        .restaurant-price {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--ethiopian-yellow);
+        }
+        
+        .restaurant-btn {
+            width: 100%;
+            padding: 14px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, var(--ethiopian-green), var(--ethiopian-yellow), var(--ethiopian-red));
+            color: var(--ethiopian-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .restaurant-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px var(--ethiopian-yellow);
+        }
+        
+        .restaurant-btn:disabled {
+            background: linear-gradient(135deg, var(--ethiopian-red), var(--ethiopian-black));
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        /* ===== EMPTY STATE ===== */
+        
+        .empty-state {
+            text-align: center;
+            padding: 80px 20px;
+            grid-column: 1 / -1;
+        }
+        
+        .empty-icon {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--ethiopian-green), var(--ethiopian-yellow), var(--ethiopian-red));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            border: 3px dashed var(--ethiopian-yellow);
+        }
+        
+        .empty-icon i {
+            font-size: 56px;
+            color: var(--ethiopian-yellow);
+        }
+        
+        .empty-state h3 {
+            font-size: 2rem;
+            color: var(--ethiopian-yellow);
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+        
+        .empty-state p {
+            color: var(--ethiopian-white);
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+        /* ===== LOADING STATE ===== */
+        
+        .loading-state {
+            text-align: center;
+            padding: 80px 20px;
+            grid-column: 1 / -1;
+        }
+        
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid var(--ethiopian-yellow);
+            border-top: 4px solid var(--ethiopian-red);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 25px;
+        }
+        
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .loading-state p {
+            color: var(--ethiopian-white);
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+        /* ===== CATEGORY TAGS ===== */
+        
+        .category-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .category-tag {
+            background: var(--ethiopian-gray);
+            color: var(--ethiopian-yellow);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        .category-tag.vegetarian {
+            background: var(--ethiopian-gray);
+            color: var(--ethiopian-green);
+        }
+        
+        .category-tag.spicy {
+            background: var(--ethiopian-gray);
+            color: var(--ethiopian-red);
+        }
+        
+        .category-tag.premium {
+            background: var(--ethiopian-yellow);
+            color: var(--ethiopian-yellow);
+        }
+        /* ===== PAGINATION ===== */
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 2px solid var(--ethiopian-yellow);
+        }
+        
+        .page-btn {
+            padding: 12px 25px;
+            border: 2px solid var(--ethiopian-yellow);
+            background: var(--ethiopian-gray);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            color: var(--ethiopian-yellow);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .page-btn:hover:not(:disabled) {
+            border-color: var(--ethiopian-green);
+            color: var(--ethiopian-yellow);
+            transform: translateY(-2px);
+        }
+        
+        .page-btn.active {
+            background: var(--ethiopian-gray);
+            color: var(--ethiopian-yellow);
+            border-color: var(--ethiopian-green);
+        }
+        
+        .page-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        /* ===== RESPONSIVE DESIGN ===== */
+        
+        @media (max-width: 1200px) {
+            .restaurant-dashboard {
+                margin: 40px 20px;
+                padding: 30px;
+            }
+            .dashboard-header h1 {
+                font-size: 3rem;
+            }
+            .featured-carousel {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+            .restaurants-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .dashboard-header h1 {
+                font-size: 2.5rem;
+            }
+            .dashboard-header p {
+                font-size: 1.2rem;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .dashboard-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .search-container {
+                min-width: 100%;
+            }
+            .filter-options {
+                justify-content: center;
+            }
+            .featured-carousel {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .restaurant-dashboard {
+                padding: 25px;
+                margin-top: 30px;
+            }
+            .dashboard-header h1 {
+                font-size: 2.2rem;
+            }
+            .featured-restaurant,
+            .restaurant-card {
+                margin-bottom: 20px;
+            }
+            .restaurants-grid {
+                grid-template-columns: 1fr;
+            }
+            .restaurant-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .restaurant-rating {
+                align-self: flex-start;
+            }
+            .restaurant-details {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            .pagination {
+                flex-wrap: wrap;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .restaurant-dashboard {
+                margin: 20px 15px;
+                padding: 20px;
+            }
+            .dashboard-header h1 {
+                font-size: 1.8rem;
+            }
+            .section-title {
+                font-size: 1.5rem;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            .featured-badge {
+                font-size: 0.8rem;
+                padding: 6px 15px;
+            }
+            .featured-name {
+                font-size: 1.5rem;
+            }
+            .restaurant-name {
+                font-size: 1.3rem;
+            }
+            .filter-btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            .empty-state h3 {
+                font-size: 1.8rem;
+            }
+            .empty-icon {
+                width: 100px;
+                height: 100px;
+            }
+            .empty-icon i {
+                font-size: 48px;
+            }
+        }
+        /* ===== QUICK FILTERS ===== */
+        
+        .quick-filters {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            scrollbar-width: none;
+        }
+        
+        .quick-filters::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .quick-filter {
+            padding: 12px 25px;
+            border: 2px solid var(--ethiopian-yellow);
+            background: var(--ethiopian-black);
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--ethiopian-yellow);
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .quick-filter:hover {
+            border-color: var(--ethiopian-green);
+            color: var(--ethiopian-yellow);
+            transform: translateY(-2px);
+        }
+        
+        .quick-filter.active {
+            background: var(--ethiopian-green);
+            color: var(--ethiopian-white);
+            border-color: var(--ethiopian-green);
+        }
