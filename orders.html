@@ -1,273 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <title>My Orders | GurshaGO</title>
-    <link rel="stylesheet" href="css/style.css" />
-        <link rel="stylesheet" href="css/orders.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
+  <meta charset="UTF-8" />
+  <title>My Orders | GurshaGO</title>
+  <link rel="stylesheet" href="css/orders.css" />
 </head>
-
 <body>
 
-    <!-- ================= HEADER ================= -->
-    <header class="header">
-        <div class="container header-inner">
-
-            <!-- Logo -->
-           <div class="logo">
-            <img src=".vscode/images/GURSHA GO LOGO.png" alt="Delicious food">
-            <span class="logo-name">GurshaGo</span>
-                </div>
-
-            <!-- Navigation -->
-            <nav class="nav">
-                <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                <a href="" class="red" style="background-color: red;"></a>
-                <a href="index.html" class="active">Home</a>
-                <a href="restaurant-dashboard.html">Restaurants</a>
-            </nav>
-
-            <!-- Search -->
-            <div class="search">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" placeholder="Search restaurants..." />
-            </div>
-
-            <!-- Actions -->
-            <div class="actions">
-                <a href="login.html" class="login-btn">
-                    <i class="fa-solid fa-right-to-bracket"></i> Login
-                </a>
-
-                <a href="cart.html" class="cart-btn">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                    <span class="cart-count">0</span>
-                </a>
-            </div>
-
-        </div>
-    </header>
-
-    <div class="auth-container" style="max-width: 900px;">
-        <h2>My Orders</h2>
-
-        <!-- Filter Controls -->
-        <div class="filter-controls">
-            <div class="filter-buttons">
-                <button class="filter-btn active" data-filter="all">All Orders</button>
-                <button class="filter-btn" data-filter="pending">Pending</button>
-                <button class="filter-btn" data-filter="preparing">Preparing</button>
-                <button class="filter-btn" data-filter="delivering">Delivering</button>
-                <button class="filter-btn" data-filter="completed">Completed</button>
-            </div>
-            <div class="search-box">
-                <i class="fas fa-search"></i>
-                <input type="text" id="orderSearch" placeholder="Search orders..." />
-            </div>
-        </div>
-
-        <!-- Orders List -->
-        <div id="ordersList">
-            <!-- Order cards will be dynamically inserted here -->
-
-            <!-- Example Order Card -->
-            <div class="order-card preparing">
-                <!-- Order Header -->
-                <div class="order-header">
-                    <div class="order-info">
-                        <div class="order-id">#ORD-123456</div>
-                        <div class="order-date">
-                            <i class="far fa-calendar"></i> Ordered on: Jan 15, 2024 • 2:30 PM
-                        </div>
-                    </div>
-                    <span class="order-status status-preparing">Preparing</span>
-                </div>
-
-                <!-- Order Content -->
-                <div class="order-content">
-                    <!-- Restaurant Info -->
-                    <div class="restaurant-info">
-                        <div class="restaurant-image">
-                            <div class="restaurant-image-placeholder">
-                                <span>A</span>
-                            </div>
-                        </div>
-                        <div class="restaurant-details">
-                            <div class="restaurant-name">Addis Kitchen</div>
-                            <div class="restaurant-address">
-                                <i class="fas fa-map-marker-alt"></i> Bole Road, Addis Ababa
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Order Items -->
-                    <div class="order-items">
-                        <div class="order-item">
-                            <div class="item-info">
-                                <span class="item-quantity">1</span>
-                                <span class="item-name">Tibs with Injera</span>
-                            </div>
-                            <span class="item-price">250 ETB</span>
-                        </div>
-                        <div class="order-item">
-                            <div class="item-info">
-                                <span class="item-quantity">2</span>
-                                <span class="item-name">Doro Wat</span>
-                            </div>
-                            <span class="item-price">320 ETB</span>
-                        </div>
-                        <div class="order-item">
-                            <div class="item-info">
-                                <span class="item-quantity">1</span>
-                                <span class="item-name">Coca Cola</span>
-                            </div>
-                            <span class="item-price">50 ETB</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Order Timeline -->
-                <div class="order-timeline">
-                    <div class="timeline-title">
-                        <i class="fas fa-shipping-fast"></i> Order Timeline
-                    </div>
-                    <div class="timeline-steps">
-                        <div class="timeline-step">
-                            <div class="step-icon completed">
-                                <i class="fas fa-check"></i>
-                            </div>
-                            <div class="step-info">
-                                <div class="step-label completed">Order Placed</div>
-                                <div class="step-time">2:30 PM</div>
-                            </div>
-                        </div>
-                        <div class="timeline-step">
-                            <div class="step-icon active">
-                                <i class="fas fa-utensils"></i>
-                            </div>
-                            <div class="step-info">
-                                <div class="step-label active">Preparing</div>
-                                <div class="step-time">Expected: 2:45 PM</div>
-                            </div>
-                        </div>
-                        <div class="timeline-step">
-                            <div class="step-icon">
-                                <i class="fas fa-motorcycle"></i>
-                            </div>
-                            <div class="step-info">
-                                <div class="step-label">On the Way</div>
-                                <div class="step-time">--:--</div>
-                            </div>
-                        </div>
-                        <div class="timeline-step">
-                            <div class="step-icon">
-                                <i class="fas fa-home"></i>
-                            </div>
-                            <div class="step-info">
-                                <div class="step-label">Delivered</div>
-                                <div class="step-time">--:--</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Order Footer -->
-                <div class="order-footer">
-                    <div class="order-total">
-                        Total: <span>620 ETB</span>
-                    </div>
-                    <div class="order-actions">
-                        <button class="action-btn track-btn">
-                        <i class="fas fa-map-marker-alt"></i>
-                        Track Order
-                    </button>
-                        <button class="action-btn view-btn">
-                        <i class="fas fa-eye"></i>
-                        View Details
-                    </button>
-                        <button class="action-btn cancel-btn">
-                        <i class="fas fa-times"></i>
-                        Cancel Order
-                    </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Empty State -->
-        <div id="emptyOrders" class="empty-state" style="display: none;">
-            <div class="empty-icon">
-                <i class="fas fa-shopping-bag"></i>
-            </div>
-            <h3>No Orders Yet</h3>
-            <p>You haven't placed any orders. Start exploring restaurants and place your first order!</p>
-            <button class="order-now-btn" onclick="location.href='restaurant-dashboard.html'">
-            <i class="fas fa-utensils"></i>
-            Browse Restaurants
-        </button>
-        </div>
-
-        <!-- Loading State -->
-        <div id="loading" class="loading-state" style="display: none;">
-            <div class="loading-spinner"></div>
-            <p>Loading your orders...</p>
-        </div>
-
-        <!-- Pagination -->
-        <div class="pagination" style="display: flex; justify-content: center; gap: 10px; margin-top: 40px;">
-            <button class="page-btn" id="prevPage">Previous</button>
-            <span id="pageInfo" style="display: flex; align-items: center; padding: 0 15px;">Page 1 of 1</span>
-            <button class="page-btn" id="nextPage">Next</button>
-        </div>
+  <header class="nav-bar">
+    <div class="nav-left">
+      <h2>🍽 My Orders</h2>
     </div>
+    <nav class="nav-right">
+      <a href="home.html">Home</a>      
+      <a href="cart.html">🛒 Cart</a>
+    </nav>
+  </header>
 
+  <main class="orders-container">
+    <div id="ordersList" class="orders-list"></div>
+  </main>
 
+  <footer class="footer">
+    <p>© 2026 GurshaGO · All rights reserved</p>
+  </footer>
 
-    <!-- ================= FOOTER ================= -->
-    <footer class="footer">
-        <div class="container footer-grid">
-
-            <div>
-                <h4>Customers</h4>
-                <a href="restaurant-dashboard.html">Browse Restaurants</a>
-                <a href="#">Deals & Offers</a>
-                <a href="#">FAQ</a>
-                <a href="#">Contact Support</a>
-            </div>
-
-            <div>
-                <h4>Restaurants</h4>
-                <a href="#">Partner With Us</a>
-                <a href="#">Restaurant Login</a>
-                <a href="#">Benefits</a>
-            </div>
-
-            <div>
-                <h4>Company</h4>
-                <a href="#">About GurshaGo</a>
-                <a href="#">Careers</a>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
-            </div>
-
-        </div>
-
-        <div class="footer-bottom">
-            <p>© 2026 GurshaGo. All rights reserved.</p>
-
-            <div class="social-icons">
-                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            </div>
-        </div>
-    </footer>
-
-    <script src="js/firebase.js" type="module"></script>
-    <script src="js/orders.js" type="module"></script>
+  <script src="js/firebase.js" type="module"></script>
+  <script src="js/orders.js" type="module"></script>
 </body>
-
 </html>

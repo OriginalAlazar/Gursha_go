@@ -1,411 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <title>Home | GurshaGO</title>
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/home.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home | GurshaGO</title>
+
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/home.css" />
 </head>
-
-
-
 <body>
 
-    <!-- ================= HEADER ================= -->
-    <header class="header">
-        <div class="container header-inner">
+  <!-- ===== HEADER ===== -->
+  <header class="navbar">
+    <div class="nav-left">
+      <img src="images/logo.jpg" class="logo" alt="GurshaGO" />
+      <div>
+        <h3>GurshaGO</h3>
+        <span class="location">📍 Addis Ababa</span>
+      </div>
+    </div>
 
-            <!-- Logo -->
-            <span class="logo-name">GurshaGo</span>
+    <nav class="nav-right">
+      <a href="home.html" class="nav-link active">Home</a>
+      <a href="orders.html" class="nav-link">Orders</a>
+      <a href="cart.html" class="cart-btn">
+        🛒 <span id="cartCount">0</span>
+      </a>
+    </nav>
+  </header>
 
-            <!-- Navigation -->
-            <nav class="nav">
-                <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                <a href="" class="red" style="background-color: red;"></a>
-                <a href="index.html" class="active">Home</a>
-                <a href="restaurant-dashboard.html">Restaurants</a>
-            </nav>
+  <!-- ===== SEARCH ===== -->
+  <section class="search-section">
+    <input
+      id="searchInput"
+      type="text"
+      placeholder="Search restaurants or dishes..."
+    />
+  </section>
 
-            <!-- Search -->
-            <div class="search">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" placeholder="Search restaurants..." />
-            </div>
+  <!-- ===== CONTENT ===== -->
+  <main class="content">
+    <h2 class="section-title">Popular Restaurants</h2>
+    <div id="restaurantList" class="restaurant-grid"></div>
+  </main>
 
-            <!-- Actions -->
-            <div class="actions">
-                <a href="login.html" class="login-btn">
-                    <i class="fa-solid fa-right-to-bracket"></i> Login
-                </a>
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-top">
+      <h4>GurshaGO</h4>
+      <p>Order food from your favorite local restaurants.</p>
+    </div>
 
-                <a href="cart.html" class="cart-btn">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                    <span class="cart-count">0</span>
-                </a>
-            </div>
+    <div class="footer-links">
+      <a href="home.html">Home</a>
+      <a href="orders.html">Orders</a>
+      <a href="cart.html">Cart</a>
+      <a href="login.html">Logout</a>
+    </div>
 
-        </div>
-    </header>
+    <p class="footer-copy">© 2026 GurshaGO • Delivering Ethiopian flavors 🇪🇹</p>
+  </footer>
 
-    <!-- Hero Banner -->
-    <section class="hero-banner">
-        <div class="hero-image">
-            <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80" alt="Delicious food delivery">
-        </div>
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-title">Craving Something Delicious?</h1>
-                <p class="hero-subtitle">Discover the best food in your city. Fast delivery to your door.</p>
-                <div class="hero-search">
-                    <div class="search-container">
-                        <i class="fas fa-search search-icon"></i>
-                        <input type="text" class="search-input" placeholder="What are you craving for?" id="heroSearch">
-                        <button class="btn btn-white search-btn" id="heroSearchBtn">
-                            <i class="fas fa-arrow-right"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-
-    <!-- Restaurant Section -->
-    <section class="restaurant-section">
-        <div class="section-header">
-            <h2 class="section-title">Restaurant Collection</h2>
-            <p class="section-subtitle">Discover exceptional dining experiences with tailored delivery</p>
-        </div>
-
-        <!-- Centered Restaurant Container -->
-        <div class="restaurant-container">
-            <!-- Restaurant Grid -->
-            <div class="restaurant-grid">
-                <!-- Editor's Choice: Addis Kitchen -->
-                <div class="restaurant-card featured">
-                    <div class="featured-badge">
-                        <i class="fas fa-crown"></i> Editor's Choice
-                    </div>
-                    <div class="card-content">
-                        <div class="restaurant-header">
-                            <h3 class="restaurant-name">Addis Kitchen</h3>
-                            <div class="restaurant-cuisine">Authentic Ethiopian Cuisine</div>
-                        </div>
-
-                        <div class="restaurant-image" style="background-image: url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');"></div>
-
-                        <div class="restaurant-info">
-                            <p class="restaurant-desc">Experience the rich flavors of Ethiopia with traditional injera bread, spicy stews, and aromatic coffee ceremonies. Family recipes passed down for generations.</p>
-
-                            <div class="restaurant-stats">
-                                <div class="stat-item">
-                                    <div class="stat-label">Rating</div>
-                                    <div class="stat-value">4.9/5.0</div>
-                                </div>
-                                <div class="stat-item">
-                                    <div class="stat-label">Prep Time</div>
-                                    <div class="stat-value">25-35 min</div>
-                                </div>
-                                <div class="stat-item">
-                                    <div class="stat-label">Popular Item</div>
-                                    <div class="stat-value">Doro Wat</div>
-                                </div>
-                            </div>
-
-                            <!-- Delivery & Pricing Section -->
-                            <div class="delivery-pricing-section">
-                                <h4 class="delivery-title"><i class="fas fa-shipping-fast"></i> Delivery & Pricing</h4>
-                                <p class="delivery-info">Delivery in <strong>an hour or less</strong>. Each order can contain up to <strong>eight items</strong>.</p>
-
-                                <div class="pricing-tiers">
-                                    <div class="tier">
-                                        <span class="distance">0-3 KM</span>
-                                        <span class="price">160 ETB</span>
-                                    </div>
-                                    <div class="tier">
-                                        <span class="distance">3-6 KM</span>
-                                        <span class="price">200 ETB</span>
-                                    </div>
-                                    <div class="tier">
-                                        <span class="distance">6-9 KM</span>
-                                        <span class="price">250 ETB</span>
-                                    </div>
-                                    <div class="tier unavailable">
-                                        <span class="distance">9-12 KM</span>
-                                        <span class="price">N/A</span>
-                                    </div>
-                                </div>
-
-                                <div class="current-pricing">
-                                    <div class="your-distance">
-                                        <i class="fas fa-map-marker-alt"></i>
-                                        <div>
-                                            <div class="label">Your Distance</div>
-                                            <div class="value" id="distance-1">5 km</div>
-                                        </div>
-                                    </div>
-                                    <div class="your-price">
-                                        <div class="price-amount" id="price-1">200 ETB</div>
-                                        <div class="label">Delivery Fee</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="action-buttons">
-                                <button class="add-to-cart-btn red-btn">
-                                <i class="fas fa-cart-plus"></i> Add to Cart
-                            </button>
-                                <button class="order-now-btn white-btn">
-                                <i class="fas fa-bolt"></i> Order Now
-                            </button>
-                            </div>
-
-                            <div class="cart-notification" id="notification-1">
-                                <i class="fas fa-check-circle"></i> Added to cart! <a href="#" class="view-cart">View Cart</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Roma Pizza -->
-                <div class="restaurant-card">
-                    <div class="card-content">
-                        <div class="restaurant-header">
-                            <h3 class="restaurant-name">Roma Pizza</h3>
-                            <div class="restaurant-cuisine">Authentic Italian Pizza</div>
-                        </div>
-
-                        <div class="restaurant-image" style="background-image: url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');"></div>
-
-                        <div class="restaurant-info">
-                            <p class="restaurant-desc">Neapolitan-style pizza baked in a traditional wood-fired oven. Fresh ingredients imported directly from Italy, with dough fermented for 48 hours.</p>
-
-                            <div class="restaurant-stats">
-                                <div class="stat-item">
-                                    <div class="stat-label">Rating</div>
-                                    <div class="stat-value">4.7/5.0</div>
-                                </div>
-                                <div class="stat-item">
-                                    <div class="stat-label">Prep Time</div>
-                                    <div class="stat-value">20-30 min</div>
-                                </div>
-                                <div class="stat-item">
-                                    <div class="stat-label">Popular Item</div>
-                                    <div class="stat-value">Margherita</div>
-                                </div>
-                            </div>
-
-                            <!-- Delivery & Pricing Section -->
-                            <div class="delivery-pricing-section">
-                                <h4 class="delivery-title"><i class="fas fa-shipping-fast"></i> Delivery & Pricing</h4>
-                                <p class="delivery-info">Delivery in <strong>an hour or less</strong>. Each order can contain up to <strong>eight items</strong>.</p>
-
-                                <div class="pricing-tiers">
-                                    <div class="tier">
-                                        <span class="distance">0-3 KM</span>
-                                        <span class="price">160 ETB</span>
-                                    </div>
-                                    <div class="tier">
-                                        <span class="distance">3-6 KM</span>
-                                        <span class="price">200 ETB</span>
-                                    </div>
-                                    <div class="tier">
-                                        <span class="distance">6-9 KM</span>
-                                        <span class="price">250 ETB</span>
-                                    </div>
-                                    <div class="tier unavailable">
-                                        <span class="distance">9-12 KM</span>
-                                        <span class="price">N/A</span>
-                                    </div>
-                                </div>
-
-                                <div class="current-pricing">
-                                    <div class="your-distance">
-                                        <i class="fas fa-map-marker-alt"></i>
-                                        <div>
-                                            <div class="label">Your Distance</div>
-                                            <div class="value" id="distance-2">5 km</div>
-                                        </div>
-                                    </div>
-                                    <div class="your-price">
-                                        <div class="price-amount" id="price-2">200 ETB</div>
-                                        <div class="label">Delivery Fee</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="action-buttons">
-                                <button class="add-to-cart-btn red-btn">
-                                <i class="fas fa-cart-plus"></i> Add to Cart
-                            </button>
-                                <button class="order-now-btn white-btn">
-                                <i class="fas fa-bolt"></i> Order Now
-                            </button>
-                            </div>
-
-                            <div class="cart-notification" id="notification-2">
-                                <i class="fas fa-check-circle"></i> Added to cart! <a href="#" class="view-cart">View Cart</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Mignot's Restaurant -->
-                <div class="restaurant-card">
-                    <div class="card-content">
-                        <div class="restaurant-header">
-                            <h3 class="restaurant-name">Mignot's Restaurant</h3>
-                            <div class="restaurant-cuisine">Fine Dining Experience</div>
-                        </div>
-
-                        <div class="restaurant-image" style="background-image: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');"></div>
-
-                        <div class="restaurant-info">
-                            <p class="restaurant-desc">Award-winning fine dining with a seasonal menu crafted by internationally acclaimed chefs. Elegant presentation and exceptional service.</p>
-
-                            <div class="restaurant-stats">
-                                <div class="stat-item">
-                                    <div class="stat-label">Rating</div>
-                                    <div class="stat-value">4.8/5.0</div>
-                                </div>
-                                <div class="stat-item">
-                                    <div class="stat-label">Prep Time</div>
-                                    <div class="stat-value">35-45 min</div>
-                                </div>
-                                <div class="stat-item">
-                                    <div class="stat-label">Popular Item</div>
-                                    <div class="stat-value">Filet Mignon</div>
-                                </div>
-                            </div>
-
-                            <!-- Delivery & Pricing Section -->
-                            <div class="delivery-pricing-section">
-                                <h4 class="delivery-title"><i class="fas fa-shipping-fast"></i> Delivery & Pricing</h4>
-                                <p class="delivery-info">Delivery in <strong>an hour or less</strong>. Each order can contain up to <strong>eight items</strong>.</p>
-
-                                <div class="pricing-tiers">
-                                    <div class="tier">
-                                        <span class="distance">0-3 KM</span>
-                                        <span class="price">160 ETB</span>
-                                    </div>
-                                    <div class="tier">
-                                        <span class="distance">3-6 KM</span>
-                                        <span class="price">200 ETB</span>
-                                    </div>
-                                    <div class="tier">
-                                        <span class="distance">6-9 KM</span>
-                                        <span class="price">250 ETB</span>
-                                    </div>
-                                    <div class="tier unavailable">
-                                        <span class="distance">9-12 KM</span>
-                                        <span class="price">N/A</span>
-                                    </div>
-                                </div>
-
-                                <div class="current-pricing">
-                                    <div class="your-distance">
-                                        <i class="fas fa-map-marker-alt"></i>
-                                        <div>
-                                            <div class="label">Your Distance</div>
-                                            <div class="value" id="distance-3">5 km</div>
-                                        </div>
-                                    </div>
-                                    <div class="your-price">
-                                        <div class="price-amount" id="price-3">200 ETB</div>
-                                        <div class="label">Delivery Fee</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="action-buttons">
-                                <button class="add-to-cart-btn red-btn">
-                                <i class="fas fa-cart-plus"></i> Add to Cart
-                            </button>
-                                <button class="order-now-btn white-btn">
-                                <i class="fas fa-bolt"></i> Order Now
-                            </button>
-                            </div>
-
-                            <div class="cart-notification" id="notification-3">
-                                <i class="fas fa-check-circle"></i> Added to cart! <a href="#" class="view-cart">View Cart</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Centered Distance Control -->
-        <div class="distance-control-wrapper">
-            <div class="distance-control">
-                <div class="control-header">
-                    <h3>Adjust Your Location Distance</h3>
-                    <div class="current-distance-display" id="current-distance-display">5 km</div>
-                </div>
-                <p class="control-subtitle">Slide to adjust your distance from restaurants. Delivery fees update automatically.</p>
-
-                <div class="slider-container">
-                    <input type="range" min="1" max="12" value="5" class="distance-slider" id="distance-slider">
-                    <div class="slider-labels">
-                        <span>1 km</span>
-                        <span>3 km</span>
-                        <span>6 km</span>
-                        <span>9 km</span>
-                        <span>12 km</span>
-                    </div>
-                </div>
-
-                <p class="slider-note"><i class="fas fa-info-circle"></i> Delivery available up to 9 km only</p>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- ================= FOOTER ================= -->
-    <footer class="footer">
-        <div class="container footer-grid">
-
-            <div>
-                <h4>Customers</h4>
-                <a href="restaurant-dashboard.html">Browse Restaurants</a>
-                <a href="#">Deals & Offers</a>
-                <a href="#">FAQ</a>
-                <a href="#">Contact Support</a>
-            </div>
-
-            <div>
-                <h4>Restaurants</h4>
-                <a href="#">Partner With Us</a>
-                <a href="#">Restaurant Login</a>
-                <a href="#">Benefits</a>
-            </div>
-
-            <div>
-                <h4>Company</h4>
-                <a href="#">About GurshaGo</a>
-                <a href="#">Careers</a>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
-            </div>
-
-        </div>
-
-        <div class="footer-bottom">
-            <p>© 2026 GurshaGo. All rights reserved.</p>
-
-            <div class="social-icons">
-                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            </div>
-        </div>
-    </footer>
-
-    <script src="js/firebase.js" type="module"></script>
-    <script src="js/home.js" type="module"></script>
+  <script src="js/firebase.js" type="module"></script>
+  <script src="js/home.js" type="module"></script>
 </body>
-
 </html>

@@ -1,260 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <title>Admin Panel | GurshaGO</title>
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/admin.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
+  <meta charset="UTF-8" />
+  <title>Admin Panel | GurshaGO</title>
+  <link rel="stylesheet" href="css/admin.css" />
 </head>
-
 <body>
-    <!-- ================= HEADER ================= -->
-    <header class="header">
-        <div class="container header-inner">
 
-            <!-- Logo -->
-           <div class="logo">
-            <img src=".vscode/images/GURSHA GO LOGO.png" alt="Delicious food">
-            <span class="logo-name">GurshaGo</span>
-                </div>
+  <header class="admin-header">
+    <h2>🛠 GurshaGO Admin Panel</h2>
+    <a href="login.html" class="logout-btn">Logout</a>
+  </header>
 
-            <!-- Navigation -->
-            <nav class="nav">
-                <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                <a href="" class="red" style="background-color: red;"></a>
-                <a href="index.html" class="active">Home</a>
-                <a href="restaurant-dashboard.html">Restaurants</a>
-            </nav>
+  <main class="auth-container" style="max-width: 1000px;">
+    <section class="stats">
+      <div class="stats-box">Customers: <span id="totalCustomers">0</span></div>
+      <div class="stats-box">Restaurants: <span id="totalRestaurants">0</span></div>
+      <div class="stats-box">Orders: <span id="totalOrders">0</span></div>
+      <div class="stats-box">Revenue: <span id="totalRevenue">0</span> ETB</div>
+    </section>
 
-            <!-- Search -->
-            <div class="search">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" placeholder="Search restaurants..." />
-            </div>
+    <section>
+      <h3>Users</h3>
+      <table id="usersTable">
+        <thead>
+          <tr><th>Name</th><th>Email</th><th>Role</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
 
-            <!-- Actions -->
-            <div class="actions">
-                <a href="login.html" class="login-btn">
-                    <i class="fa-solid fa-right-to-bracket"></i> Login
-                </a>
+    <section>
+      <h3>Restaurants</h3>
+      <table id="restaurantsTable">
+        <thead>
+          <tr><th>Name</th><th>Cuisine</th><th>Status</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
 
-                <a href="cart.html" class="cart-btn">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                    <span class="cart-count">0</span>
-                </a>
-            </div>
+    <section>
+      <h3>Orders</h3>
+      <table id="ordersTable">
+        <thead>
+          <tr><th>ID</th><th>Customer</th><th>Restaurant</th><th>Total</th><th>Status</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </main>
 
-        </div>
-    </header>
-
-
-    <div class="auth-container" style="max-width: 1200px;">
-        <h2>Admin Panel</h2>
-
-        <!-- Statistics Section -->
-        <div id="stats">
-            <div class="stats-box">
-                <span>Customers</span>
-                <span id="totalCustomers">0</span>
-            </div>
-            <div class="stats-box">
-                <span>Restaurants</span>
-                <span id="totalRestaurants">0</span>
-            </div>
-            <div class="stats-box">
-                <span>Orders</span>
-                <span id="totalOrders">0</span>
-            </div>
-            <div class="stats-box">
-                <span>Revenue</span>
-                <span id="totalRevenue">0</span> ETB
-            </div>
-        </div>
-
-        <!-- Users Section -->
-        <h3>Users</h3>
-        <div class="table-controls">
-            <div class="search-box">
-                <input type="text" id="userSearch" placeholder="Search users..." />
-            </div>
-            <div class="filter-controls">
-                <select class="filter-select" id="userRoleFilter">
-                <option value="all">All Roles</option>
-                <option value="customer">Customer</option>
-                <option value="restaurant">Restaurant</option>
-                <option value="admin">Admin</option>
-            </select>
-                <select class="filter-select" id="userStatusFilter">
-                <option value="all">All Status</option>
-                <option value="active">Active</option>
-                <option value="inactive">Inactive</option>
-            </select>
-            </div>
-        </div>
-        <table id="usersTable">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Role</th>
-                    <th>Status</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Users will be dynamically inserted here -->
-            </tbody>
-        </table>
-        <div class="pagination" id="usersPagination">
-            <button class="page-btn" id="usersPrevBtn">Previous</button>
-            <span id="usersPageInfo">Page 1 of 1</span>
-            <button class="page-btn" id="usersNextBtn">Next</button>
-        </div>
-
-        <!-- Restaurants Section -->
-        <h3>Restaurants</h3>
-        <div class="table-controls">
-            <div class="search-box">
-                <input type="text" id="restaurantSearch" placeholder="Search restaurants..." />
-            </div>
-            <div class="filter-controls">
-                <select class="filter-select" id="restaurantStatusFilter">
-                <option value="all">All Status</option>
-                <option value="active">Active</option>
-                <option value="inactive">Inactive</option>
-            </select>
-                <select class="filter-select" id="restaurantCuisineFilter">
-                <option value="all">All Cuisines</option>
-                <option value="italian">Italian</option>
-                <option value="chinese">Chinese</option>
-                <option value="mexican">Mexican</option>
-                <option value="indian">Indian</option>
-            </select>
-            </div>
-        </div>
-        <table id="restaurantsTable">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Cuisine</th>
-                    <th>Rating</th>
-                    <th>Status</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Restaurants will be dynamically inserted here -->
-            </tbody>
-        </table>
-        <div class="pagination" id="restaurantsPagination">
-            <button class="page-btn" id="restaurantsPrevBtn">Previous</button>
-            <span id="restaurantsPageInfo">Page 1 of 1</span>
-            <button class="page-btn" id="restaurantsNextBtn">Next</button>
-        </div>
-
-        <!-- Orders Section -->
-        <h3>Orders</h3>
-        <div class="table-controls">
-            <div class="search-box">
-                <input type="text" id="orderSearch" placeholder="Search orders..." />
-            </div>
-            <div class="filter-controls">
-                <select class="filter-select" id="orderStatusFilter">
-                <option value="all">All Status</option>
-                <option value="pending">Pending</option>
-                <option value="processing">Processing</option>
-                <option value="completed">Completed</option>
-                <option value="cancelled">Cancelled</option>
-            </select>
-                <select class="filter-select" id="orderDateFilter">
-                <option value="all">All Time</option>
-                <option value="today">Today</option>
-                <option value="week">This Week</option>
-                <option value="month">This Month</option>
-            </select>
-            </div>
-        </div>
-        <table id="ordersTable">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Customer</th>
-                    <th>Restaurant</th>
-                    <th>Total</th>
-                    <th>Status</th>
-                    <th>Date</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Orders will be dynamically inserted here -->
-            </tbody>
-        </table>
-        <div class="pagination" id="ordersPagination">
-            <button class="page-btn" id="ordersPrevBtn">Previous</button>
-            <span id="ordersPageInfo">Page 1 of 1</span>
-            <button class="page-btn" id="ordersNextBtn">Next</button>
-        </div>
-
-        <!-- Loading State -->
-        <div id="loading" class="loading-state" style="display: none;">
-            <div class="loading-spinner"></div>
-            <p>Loading data...</p>
-        </div>
-
-        <!-- Empty State -->
-        <div id="emptyUsers" class="empty-state" style="display: none;">
-            <i class="fas fa-users"></i>
-            <p>No users found</p>
-        </div>
-    </div>
-
-
-    <!-- ================= FOOTER ================= -->
-    <footer class="footer">
-        <div class="container footer-grid">
-
-            <div>
-                <h4>Customers</h4>
-                <a href="restaurant-dashboard.html">Browse Restaurants</a>
-                <a href="#">Deals & Offers</a>
-                <a href="#">FAQ</a>
-                <a href="#">Contact Support</a>
-            </div>
-
-            <div>
-                <h4>Restaurants</h4>
-                <a href="#">Partner With Us</a>
-                <a href="#">Restaurant Login</a>
-                <a href="#">Benefits</a>
-            </div>
-
-            <div>
-                <h4>Company</h4>
-                <a href="#">About GurshaGo</a>
-                <a href="#">Careers</a>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
-            </div>
-
-        </div>
-
-        <div class="footer-bottom">
-            <p>© 2026 GurshaGo. All rights reserved.</p>
-
-            <div class="social-icons">
-                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            </div>
-        </div>
-    </footer>
-
-    <script src="js/firebase.js" type="module"></script>
-    <script src="js/admin.js" type="module"></script>
+  <script src="js/firebase.js" type="module"></script>
+  <script src="js/admin.js" type="module"></script>
 </body>
-
 </html>

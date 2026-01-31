@@ -1,614 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <title>Home | GurshaGO</title>
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/restaurant-dashboard.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-
+  <meta charset="UTF-8" />
+  <title>Restaurant Dashboard | GurshaGO</title>
+  <link rel="stylesheet" href="css/restaurant-dashboard.css" />
 </head>
-
 <body>
 
-    <!-- ================= HEADER ================= -->
-    <header class="header">
-        <div class="container header-inner">
-
-            <!-- Logo -->
-            <div class="logo">
-            <img src=".vscode/images/GURSHA GO LOGO.png" alt="Delicious food">
-            <span class="logo-name">GurshaGo</span>
-                </div>
-
-            <!-- Navigation -->
-            <nav class="nav">
-                <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                <a href="" class="red" style="background-color: red;"></a>
-                <a href="index.html" class="active">Home</a>
-                <a href="restaurant-dashboard.html">Restaurants</a>
-            </nav>
-
-            <!-- Search -->
-            <div class="search">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" placeholder="Search restaurants..." />
-            </div>
-
-            <!-- Actions -->
-            <div class="actions">
-                <a href="login.html" class="login-btn">
-                    <i class="fa-solid fa-right-to-bracket"></i> Login
-                </a>
-
-                <a href="cart.html" class="cart-btn">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                    <span class="cart-count">0</span>
-                </a>
-            </div>
-
-        </div>
-    </header>
-
-
-
-    <div class="restaurant-dashboard">
-        <!-- Dashboard Header -->
-        <div class="dashboard-header">
-            <h1>🍽️ Find Your Favorite Restaurant</h1>
-            <p>Discover and order from the best restaurants in Addis Ababa</p>
-        </div>
-
-        <!-- Search and Filter Controls -->
-        <div class="dashboard-controls">
-            <div class="search-container">
-                <i class="fas fa-search"></i>
-                <input type="text" id="restaurantSearch" placeholder="Search restaurants or cuisine..." />
-            </div>
-
-            <div class="filter-options">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="open">Open Now</button>
-                <button class="filter-btn" data-filter="rating">Top Rated</button>
-                <button class="filter-btn" data-filter="delivery">Fast Delivery</button>
-            </div>
-        </div>
-
-        <!-- Quick Filters -->
-        <div class="quick-filters">
-            <button class="quick-filter active" data-cuisine="all">
-            <i class="fas fa-utensils"></i> All Cuisines
-        </button>
-            <button class="quick-filter" data-cuisine="ethiopian">
-            <i class="fas fa-globe-africa"></i> Ethiopian
-        </button>
-            <button class="quick-filter" data-cuisine="italian">
-            <i class="fas fa-pizza-slice"></i> Italian
-        </button>
-            <button class="quick-filter" data-cuisine="asian">
-            <i class="fas fa-utensils"></i> Asian
-        </button>
-            <button class="quick-filter" data-cuisine="fastfood">
-            <i class="fas fa-hamburger"></i> Fast Food
-        </button>
-            <button class="quick-filter" data-cuisine="desserts">
-            <i class="fas fa-ice-cream"></i> Desserts
-        </button>
-        </div>
-
-        <!-- Featured Restaurants -->
-        <div class="featured-section">
-            <div class="section-header">
-                <h2 class="section-title">
-                    <i class="fas fa-crown"></i> Featured Restaurants
-                </h2>
-                <a href="#" class="view-all">
-                View All <i class="fas fa-arrow-right"></i>
-            </a>
-            </div>
-
-            <div class="featured-carousel">
-                <!-- Featured Restaurant 1 -->
-                <div class="featured-restaurant" data-id="1" data-cuisine="ethiopian">
-                    <div class="featured-badge">⭐ Featured</div>
-                    <div class="featured-image">
-                        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Addis Food Restaurant" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'">
-                    </div>
-                    <div class="featured-content">
-                        <div class="featured-header">
-                            <h3 class="featured-name">Addis Food</h3>
-                            <span class="featured-rating">4.8 ★</span>
-                        </div>
-                        <div class="featured-cuisine">
-                            <i class="fas fa-tag"></i> Ethiopian • Traditional
-                        </div>
-                        <p>Authentic Ethiopian cuisine with traditional flavors and modern presentation. Best tibs in town!</p>
-
-                        <div class="category-tags">
-                            <span class="category-tag vegetarian">Vegetarian Options</span>
-                            <span class="category-tag spicy">Spicy</span>
-                            <span class="category-tag premium">Premium</span>
-                        </div>
-
-                        <div class="featured-details">
-                            <div class="featured-delivery">
-                                <i class="fas fa-clock"></i>
-                                <span>25-40 min</span>
-                            </div>
-                            <div class="featured-price">$$</div>
-                        </div>
-
-                        <button class="featured-btn" onclick="selectRestaurant('1')">
-                        <i class="fas fa-shopping-cart"></i>
-                        Order Now
-                    </button>
-                    </div>
-                </div>
-
-                <!-- Featured Restaurant 2 -->
-                <div class="featured-restaurant" data-id="2" data-cuisine="italian">
-                    <div class="featured-badge">🔥 Popular</div>
-                    <div class="featured-image">
-                        <img src="https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Italian Bistro" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'">
-                    </div>
-                    <div class="featured-content">
-                        <div class="featured-header">
-                            <h3 class="featured-name">Italian Bistro</h3>
-                            <span class="featured-rating">4.6 ★</span>
-                        </div>
-                        <div class="featured-cuisine">
-                            <i class="fas fa-tag"></i> Italian • Pasta • Pizza
-                        </div>
-                        <p>Authentic Italian pasta and wood-fired pizza. Fresh ingredients imported directly from Italy.</p>
-
-                        <div class="category-tags">
-                            <span class="category-tag vegetarian">Vegetarian</span>
-                            <span class="category-tag">Family Friendly</span>
-                        </div>
-
-                        <div class="featured-details">
-                            <div class="featured-delivery">
-                                <i class="fas fa-clock"></i>
-                                <span>30-45 min</span>
-                            </div>
-                            <div class="featured-price">$$$</div>
-                        </div>
-
-                        <button class="featured-btn" onclick="selectRestaurant('2')">
-                        <i class="fas fa-shopping-cart"></i>
-                        Order Now
-                    </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- All Restaurants -->
-        <div class="all-restaurants-section">
-            <div class="section-header">
-                <h2 class="section-title">
-                    <i class="fas fa-store"></i> All Restaurants
-                </h2>
-                <div class="view-all">
-                    Showing <span id="restaurantCount">12</span> restaurants
-                </div>
-            </div>
-
-            <div id="restaurantsGrid" class="restaurants-grid">
-                <!-- Restaurant 1 -->
-                <div class="restaurant-card" data-id="3" data-cuisine="ethiopian" data-open="true">
-                    <div class="restaurant-status status-open">Open Now</div>
-                    <div class="restaurant-image">
-                        <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Habesha Kitchen" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'">
-                    </div>
-                    <div class="restaurant-content">
-                        <div class="restaurant-header">
-                            <h3 class="restaurant-name">Habesha Kitchen</h3>
-                            <div class="restaurant-rating">
-                                <span class="stars">★★★★☆</span>
-                                <span class="value">4.3</span>
-                            </div>
-                        </div>
-                        <div class="restaurant-cuisine">
-                            <i class="fas fa-utensils"></i> Ethiopian • Traditional • Family Style
-                        </div>
-                        <p class="restaurant-description">Traditional Ethiopian dishes with a modern twist. Famous for our doro wat and injera.</p>
-
-                        <div class="restaurant-details">
-                            <div class="restaurant-delivery">
-                                <div class="delivery-time">
-                                    <i class="fas fa-clock"></i>
-                                    <span>20-35 min</span>
-                                </div>
-                                <div class="delivery-fee">Free delivery over 300 ETB</div>
-                            </div>
-                            <div class="restaurant-price">$$</div>
-                        </div>
-
-                        <button class="restaurant-btn" onclick="selectRestaurant('3')">
-                        <i class="fas fa-shopping-cart"></i>
-                        View Menu
-                    </button>
-                    </div>
-                </div>
-
-                <!-- Restaurant 2 -->
-                <div class="restaurant-card" data-id="4" data-cuisine="asian" data-open="true">
-                    <div class="restaurant-status status-open">Open Now</div>
-                    <div class="restaurant-image">
-                        <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Dragon Chinese" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'">
-                    </div>
-                    <div class="restaurant-content">
-                        <div class="restaurant-header">
-                            <h3 class="restaurant-name">Dragon Chinese</h3>
-                            <div class="restaurant-rating">
-                                <span class="stars">★★★★★</span>
-                                <span class="value">4.9</span>
-                            </div>
-                        </div>
-                        <div class="restaurant-cuisine">
-                            <i class="fas fa-utensils"></i> Chinese • Asian • Sushi
-                        </div>
-                        <p class="restaurant-description">Authentic Chinese cuisine with sushi bar. Fresh ingredients daily.</p>
-
-                        <div class="restaurant-details">
-                            <div class="restaurant-delivery">
-                                <div class="delivery-time">
-                                    <i class="fas fa-clock"></i>
-                                    <span>35-50 min</span>
-                                </div>
-                                <div class="delivery-fee">40 ETB delivery</div>
-                            </div>
-                            <div class="restaurant-price">$$$</div>
-                        </div>
-
-                        <button class="restaurant-btn" onclick="selectRestaurant('4')">
-                        <i class="fas fa-shopping-cart"></i>
-                        View Menu
-                    </button>
-                    </div>
-                </div>
-
-                <!-- Restaurant 3 -->
-                <div class="restaurant-card" data-id="5" data-cuisine="fastfood" data-open="false">
-                    <div class="restaurant-status status-closed">Closed</div>
-                    <div class="restaurant-image">
-                        <img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Burger Palace" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'">
-                    </div>
-                    <div class="restaurant-content">
-                        <div class="restaurant-header">
-                            <h3 class="restaurant-name">Burger Palace</h3>
-                            <div class="restaurant-rating">
-                                <span class="stars">★★★★☆</span>
-                                <span class="value">4.5</span>
-                            </div>
-                        </div>
-                        <div class="restaurant-cuisine">
-                            <i class="fas fa-utensils"></i> American • Burgers • Fast Food
-                        </div>
-                        <p class="restaurant-description">Gourmet burgers and crispy fries. Opens at 11:00 AM.</p>
-
-                        <div class="restaurant-details">
-                            <div class="restaurant-delivery">
-                                <div class="delivery-time">
-                                    <i class="fas fa-clock"></i>
-                                    <span>15-25 min</span>
-                                </div>
-                                <div class="delivery-fee">Free delivery</div>
-                            </div>
-                            <div class="restaurant-price">$</div>
-                        </div>
-
-                        <button class="restaurant-btn" disabled onclick="selectRestaurant('5')">
-                        <i class="fas fa-clock"></i>
-                        Opens at 11:00
-                    </button>
-                    </div>
-                </div>
-
-                <!-- Restaurant 4 -->
-                <div class="restaurant-card" data-id="6" data-cuisine="ethiopian" data-open="true">
-                    <div class="restaurant-status status-open">Open Now</div>
-                    <div class="restaurant-image">
-                        <img src="https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Tibs Special" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'">
-                    </div>
-                    <div class="restaurant-content">
-                        <div class="restaurant-header">
-                            <h3 class="restaurant-name">Tibs Special</h3>
-                            <div class="restaurant-rating">
-                                <span class="stars">★★★★☆</span>
-                                <span class="value">4.4</span>
-                            </div>
-                        </div>
-                        <div class="restaurant-cuisine">
-                            <i class="fas fa-utensils"></i> Ethiopian • Meat Specialties
-                        </div>
-                        <p class="restaurant-description">Specializing in tibs and kitfo. Best meat quality in the city.</p>
-
-                        <div class="restaurant-details">
-                            <div class="restaurant-delivery">
-                                <div class="delivery-time">
-                                    <i class="fas fa-clock"></i>
-                                    <span>30-45 min</span>
-                                </div>
-                                <div class="delivery-fee">50 ETB delivery</div>
-                            </div>
-                            <div class="restaurant-price">$$</div>
-                        </div>
-
-                        <button class="restaurant-btn" onclick="selectRestaurant('6')">
-                        <i class="fas fa-shopping-cart"></i>
-                        View Menu
-                    </button>
-                    </div>
-                </div>
-
-                <!-- Restaurant 5 -->
-                <div class="restaurant-card" data-id="7" data-cuisine="desserts" data-open="true">
-                    <div class="restaurant-status status-open">Open Now</div>
-                    <div class="restaurant-image">
-                        <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Sweet Delights" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'">
-                    </div>
-                    <div class="restaurant-content">
-                        <div class="restaurant-header">
-                            <h3 class="restaurant-name">Sweet Delights</h3>
-                            <div class="restaurant-rating">
-                                <span class="stars">★★★★★</span>
-                                <span class="value">4.7</span>
-                            </div>
-                        </div>
-                        <div class="restaurant-cuisine">
-                            <i class="fas fa-utensils"></i> Desserts • Bakery • Coffee
-                        </div>
-                        <p class="restaurant-description">Artisan desserts, cakes, and specialty coffee. Perfect for sweet cravings.</p>
-
-                        <div class="restaurant-details">
-                            <div class="restaurant-delivery">
-                                <div class="delivery-time">
-                                    <i class="fas fa-clock"></i>
-                                    <span>20-35 min</span>
-                                </div>
-                                <div class="delivery-fee">30 ETB delivery</div>
-                            </div>
-                            <div class="restaurant-price">$$</div>
-                        </div>
-
-                        <button class="restaurant-btn" onclick="selectRestaurant('7')">
-                        <i class="fas fa-shopping-cart"></i>
-                        View Menu
-                    </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Empty State -->
-            <div id="emptyRestaurants" class="empty-state" style="display: none;">
-                <div class="empty-icon">
-                    <i class="fas fa-store-slash"></i>
-                </div>
-                <h3>No Restaurants Found</h3>
-                <p>Try adjusting your search or filter to find what you're looking for.</p>
-                <button class="filter-btn active" onclick="resetFilters()" style="margin-top: 20px;">
-                <i class="fas fa-redo"></i> Show All Restaurants
-            </button>
-            </div>
-
-            <!-- Loading State -->
-            <div id="loading" class="loading-state" style="display: none;">
-                <div class="loading-spinner"></div>
-                <p>Loading restaurants...</p>
-            </div>
-
-            <!-- Pagination -->
-            <div class="pagination">
-                <button class="page-btn" id="prevPage">
-                <i class="fas fa-chevron-left"></i> Previous
-            </button>
-                <button class="page-btn active">1</button>
-                <button class="page-btn">2</button>
-                <button class="page-btn">3</button>
-                <button class="page-btn" id="nextPage">
-                Next <i class="fas fa-chevron-right"></i>
-            </button>
-            </div>
-        </div>
+  <!-- ===== HEADER ===== -->
+  <header class="nav-bar">
+    <div class="nav-left">
+      <h2>🍽 GurshaGO</h2>
+      <span class="page-title">Restaurant Dashboard</span>
     </div>
 
+    <nav class="nav-links">
+      <a href="restaurant-dashboard.html">Dashboard</a>
+      <a href="restaurant-menu.html">Menu</a>
+      <a href="restaurant-orders.html">Orders</a>
+      <a href="login.html" class="logout">Logout</a>
+    </nav>
+  </header>
 
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="dashboard-container">
+    <div class="status-toggle">
+      <label>
+        <input type="checkbox" id="onlineToggle" checked />
+        Online
+      </label>
+    </div>
 
+    <div class="stats">
+      <div class="stat-box">
+        <h3 id="todayOrders">0</h3>
+        <p>Today's Orders</p>
+      </div>
+      <div class="stat-box">
+        <h3 id="todayRevenue">0 ETB</h3>
+        <p>Today's Revenue</p>
+      </div>
+    </div>
 
+    <div class="links">
+      <button onclick="location.href='restaurant-menu.html'">Manage Menu</button>
+      <button onclick="location.href='restaurant-orders.html'">View Orders</button>
+    </div>
 
+    <div class="orders-list" id="recentOrders">
+      <h4>Recent Orders</h4>
+    </div>
+  </main>
 
-    <!-- ================= FOOTER ================= -->
-    <footer class="footer">
-        <div class="container footer-grid">
+  <!-- ===== FOOTER ===== -->
+  <footer class="dashboard-footer">
+    <p>© 2026 GurshaGO • Restaurant Partner Panel</p>
+    <div class="footer-links">
+      <a href="restaurant-dashboard.html">Dashboard</a>
+      <a href="restaurant-menu.html">Menu</a>
+      <a href="restaurant-orders.html">Orders</a>
+    </div>
+  </footer>
 
-            <div>
-                <h4>Customers</h4>
-                <a href="restaurant-dashboard.html">Browse Restaurants</a>
-                <a href="#">Deals & Offers</a>
-                <a href="#">FAQ</a>
-                <a href="#">Contact Support</a>
-            </div>
-
-            <div>
-                <h4>Restaurants</h4>
-                <a href="#">Partner With Us</a>
-                <a href="#">Restaurant Login</a>
-                <a href="#">Benefits</a>
-            </div>
-
-            <div>
-                <h4>Company</h4>
-                <a href="#">About GurshaGo</a>
-                <a href="#">Careers</a>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
-            </div>
-
-        </div>
-
-        <div class="footer-bottom">
-            <p>© 2026 GurshaGo. All rights reserved.</p>
-
-            <div class="social-icons">
-                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            </div>
-        </div>
-    </footer>
-
-    <!-- JavaScript for restaurant selection -->
-    <script>
-        // Restaurant selection function
-        function selectRestaurant(restaurantId) {
-            // Save selected restaurant to localStorage
-            localStorage.setItem('selectedRestaurant', restaurantId);
-
-            // Get restaurant name for display
-            const restaurantName = getRestaurantName(restaurantId);
-            localStorage.setItem('restaurantName', restaurantName);
-
-            // Redirect to menu page
-            window.location.href = 'menu.html';
-        }
-
-        function getRestaurantName(id) {
-            const restaurants = {
-                '1': 'Addis Food',
-                '2': 'Italian Bistro',
-                '3': 'Habesha Kitchen',
-                '4': 'Dragon Chinese',
-                '5': 'Burger Palace',
-                '6': 'Tibs Special',
-                '7': 'Sweet Delights'
-            };
-            return restaurants[id] || 'Restaurant';
-        }
-
-        // Filter functionality
-        document.querySelectorAll('.filter-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                // Update active button
-                document.querySelectorAll('.filter-btn').forEach(btn => {
-                    btn.classList.remove('active');
-                });
-                this.classList.add('active');
-
-                applyFilters();
-            });
-        });
-
-        // Quick filter functionality
-        document.querySelectorAll('.quick-filter').forEach(button => {
-            button.addEventListener('click', function() {
-                // Update active button
-                document.querySelectorAll('.quick-filter').forEach(btn => {
-                    btn.classList.remove('active');
-                });
-                this.classList.add('active');
-
-                applyFilters();
-            });
-        });
-
-        // Search functionality
-        document.getElementById('restaurantSearch').addEventListener('input', function(e) {
-            applyFilters();
-        });
-
-        function applyFilters() {
-            const searchTerm = document.getElementById('restaurantSearch').value.toLowerCase();
-            const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
-            const activeCuisine = document.querySelector('.quick-filter.active').dataset.cuisine;
-
-            let visibleCount = 0;
-
-            // Filter restaurant cards
-            document.querySelectorAll('.restaurant-card, .featured-restaurant').forEach(card => {
-                const name = card.querySelector('.restaurant-name, .featured-name').textContent.toLowerCase();
-                const cuisine = card.dataset.cuisine || '';
-                const isOpen = card.dataset.open === 'true';
-                const ratingElement = card.querySelector('.restaurant-rating .value, .featured-rating');
-                const rating = ratingElement ? parseFloat(ratingElement.textContent) : 0;
-
-                let shouldShow = true;
-
-                // Search filter
-                if (searchTerm && !name.includes(searchTerm)) {
-                    shouldShow = false;
-                }
-
-                // Main filter
-                if (activeFilter === 'open' && !isOpen) {
-                    shouldShow = false;
-                } else if (activeFilter === 'rating' && rating < 4.0) {
-                    shouldShow = false;
-                } else if (activeFilter === 'delivery') {
-                    // Check for fast delivery (under 30 min)
-                    const deliveryElement = card.querySelector('.delivery-time, .featured-delivery');
-                    if (deliveryElement) {
-                        const deliveryText = deliveryElement.textContent;
-                        const deliveryTime = parseInt(deliveryText.match(/\d+/) ?. [0]) || 45;
-                        if (deliveryTime > 30) shouldShow = false;
-                    }
-                }
-
-                // Cuisine filter
-                if (activeCuisine !== 'all' && cuisine !== activeCuisine) {
-                    shouldShow = false;
-                }
-
-                // Update visibility
-                if (shouldShow) {
-                    card.style.display = 'flex';
-                    visibleCount++;
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-
-            // Update restaurant count
-            document.getElementById('restaurantCount').textContent = visibleCount;
-
-            // Show/hide empty state
-            const emptyState = document.getElementById('emptyRestaurants');
-            if (visibleCount === 0) {
-                emptyState.style.display = 'block';
-            } else {
-                emptyState.style.display = 'none';
-            }
-        }
-
-        function resetFilters() {
-            document.getElementById('restaurantSearch').value = '';
-
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.remove('active');
-                if (btn.dataset.filter === 'all') btn.classList.add('active');
-            });
-
-            document.querySelectorAll('.quick-filter').forEach(btn => {
-                btn.classList.remove('active');
-                if (btn.dataset.cuisine === 'all') btn.classList.add('active');
-            });
-
-            applyFilters();
-        }
-
-        // Initialize filters on load
-        document.addEventListener('DOMContentLoaded', function() {
-            applyFilters();
-        });
-    </script>
-
-
-
-    <script src="js/firebase.js" type="module"></script>
-    <script src="js/home.js" type="module"></script>
+  <script type="module" src="js/firebase.js"></script>
+  <script type="module" src="js/restaurant-dashboard.js"></script>
 </body>
-
 </html>

@@ -1,0 +1,139 @@
+.auth-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.auth-container {
+  width: 100%;
+  max-width: 400px;
+  background: var(--card);
+  padding: 32px 30px;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+.auth-logo {
+  display: block;
+  width: 80px;
+  margin: 0 auto 12px;
+}
+
+.auth-container h2 {
+  text-align: center;
+  margin-bottom: 6px;
+  color: var(--secondary);
+}
+
+.auth-subtitle {
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 22px;
+}
+
+.auth-container input {
+  margin-bottom: 14px;
+}
+
+.auth-container button {
+  width: 100%;
+  margin-top: 6px;
+}
+
+.google-btn {
+  background: #4285f4;
+}
+
+.google-btn:hover {
+  background: #357ae8;
+}
+
+/* Divider */
+.divider {
+  display: flex;
+  align-items: center;
+  margin: 18px 0;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #ddd;
+}
+
+.divider span {
+  margin: 0 10px;
+  font-size: 12px;
+  color: #777;
+}
+
+/* Errors */
+.error {
+  color: #e63946;
+  margin-top: 12px;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* Links */
+.auth-links {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* ROLE SELECTION */
+.role-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.role-card {
+  border: 2px solid var(--border);
+  border-radius: 14px;
+  padding: 16px 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: #fff;
+}
+
+.role-card:hover {
+  border-color: var(--primary);
+}
+
+.role-card input {
+  display: none;
+}
+
+.role-content {
+  text-align: center;
+}
+
+.role-icon {
+  font-size: 28px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.role-title {
+  font-weight: 600;
+  display: block;
+}
+
+.role-desc {
+  font-size: 13px;
+  color: #666;
+  margin-top: 4px;
+}
+
+.role-card:has(input:checked) {
+  border-color: var(--primary);
+  background: #fff3ee;
+}

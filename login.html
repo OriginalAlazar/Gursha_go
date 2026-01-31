@@ -1,140 +1,47 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Login | GurshaGO</title>
-    <link rel="stylesheet" href="css/login.css" />
-    <link rel="stylesheet" href="css/style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | GurshaGO</title>
 
-  <body>
-    <!-- ================= HEADER ================= -->
-    <header class="header">
-      <div class="container header-inner">
-        <!-- Logo -->
-        <span class="logo-name">GurshaGo</span>
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/auth.css" />
+</head>
 
-        <!-- Navigation -->
-        <nav class="nav">
-          <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-          <a href="" class="red" style="background-color: red"></a>
-          <a href="index.html" class="active">Home</a>
-          <a href="restaurant-dashboard.html">Restaurants</a>
-        </nav>
+<body class="auth-page">
 
-        <!-- Search -->
-        <div class="search">
-          <i class="fa-solid fa-magnifying-glass"></i>
-          <input type="text" placeholder="Search restaurants..." />
-        </div>
-
-        <!-- Actions -->
-        <div class="actions">
-          <a href="login.html" class="login-btn">
-            <i class="fa-solid fa-right-to-bracket"></i> Login
-          </a>
-
-          <a href="cart.html" class="cart-btn">
-            <i class="fa-solid fa-cart-shopping"></i>
-            <span class="cart-count">0</span>
-          </a>
-        </div>
-      </div>
-    </header>
-
-    <!-- Login Form -->
+  <main class="auth-wrapper">
     <div class="auth-container">
-      <h2>Login to GurshaGO</h2>
-      <p>Welcome back! Please enter your details.</p>
+
+      <img src="images/logo.jpg" alt="GurshaGO Logo" class="auth-logo" />
+
+      <h2>Welcome Back</h2>
+      <p class="auth-subtitle">Login to continue ordering delicious food</p>
 
       <input type="email" id="email" placeholder="Email address" />
+      <input type="password" id="password" placeholder="Password" />
 
-      <div class="password-input-container">
-        <input type="password" id="password" placeholder="Password" />
-        <button type="button" class="password-toggle" id="passwordToggle">
-          <i class="fas fa-eye"></i>
-        </button>
+      <button onclick="login()">Login</button>
+
+      <div class="divider">
+        <span>OR</span>
       </div>
 
-      <div class="auth-options">
-        <div class="remember-me">
-          <input type="checkbox" id="remember" />
-          <label for="remember">Remember me</label>
-        </div>
-      <!--   <div class="forgot-password">
-          <a href="forgot-password.html">Forgot password?</a>
-        </div> -->
-      </div>
-
-      <button onclick="login()" id="loginBtn">
-        <i class="fas fa-sign-in-alt"></i>
-        Login
-      </button>
-
-      <div class="or-divider">
-        <span>or continue with</span>
-      </div>
-
-      <button class="google-btn" onclick="googleLogin()" id="googleBtn">
-        <i class="fab fa-google"></i>
-        Login with Google
+      <button class="google-btn" onclick="googleLogin()">
+        Continue with Google
       </button>
 
       <div id="error" class="error"></div>
 
       <div class="auth-links">
-        <p>Don't have an account? <a href="signup.html">Sign up for free</a></p>
+        <p>Don't have an account? <a href="signup.html">Sign up</a></p>
       </div>
+
     </div>
+  </main>
 
-    <!-- ================= FOOTER ================= -->
-    <footer class="footer">
-      <div class="container footer-grid">
-        <div>
-          <h4>Customers</h4>
-          <a href="restaurant-dashboard.html">Browse Restaurants</a>
-          <a href="#">Deals & Offers</a>
-          <a href="#">FAQ</a>
-          <a href="#">Contact Support</a>
-        </div>
-
-        <div>
-          <h4>Restaurants</h4>
-          <a href="#">Partner With Us</a>
-          <a href="#">Restaurant Login</a>
-          <a href="#">Benefits</a>
-        </div>
-
-        <div>
-          <h4>Company</h4>
-          <a href="#">About GurshaGo</a>
-          <a href="#">Careers</a>
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <p>© 2026 GurshaGo. All rights reserved.</p>
-
-        <div class="social-icons">
-          <a href="#" aria-label="Facebook"
-            ><i class="fab fa-facebook-f"></i
-          ></a>
-          <a href="#" aria-label="Instagram"
-            ><i class="fab fa-instagram"></i
-          ></a>
-          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-        </div>
-      </div>
-    </footer>
-
-    <!-- Firebase -->
-    <script src="js/firebase.js" type="module"></script>
-    <script src="js/auth.js" type="module"></script>
-  </body>
+  <script src="js/firebase.js" type="module"></script>
+  <script src="js/auth.js" type="module"></script>
+</body>
 </html>

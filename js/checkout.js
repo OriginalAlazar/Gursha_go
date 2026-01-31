@@ -1,16 +1,9 @@
-import {
-  collection,
-  addDoc,
-  serverTimestamp
-} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-
-import {
-  onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
 const summaryDiv = document.getElementById("orderSummary");
 
-const cart = JSON.parse(localStorage.getItem("cart")) || [];
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 const restaurantId = localStorage.getItem("restaurantId");
 const deliveryFee = 50;
 
@@ -26,19 +19,25 @@ onAuthStateChanged(auth, (user) => {
 });
 
 function renderSummary() {
+  if (cart.length === 0) {
+    summaryDiv.innerHTML = "<p>Your cart is empty.</p>";
+    return;
+  }
+
   let subtotal = 0;
   summaryDiv.innerHTML = "<h4>Order Summary</h4>";
 
-  cart.forEach((item) => {
+  cart.forEach(item => {
     subtotal += item.price * item.qty;
     summaryDiv.innerHTML += `
-      <p>${item.name} × ${item.qty}</p>
+      <p>${item.name} × ${item.qty} = ${item.price * item.qty} ETB</p>
     `;
   });
 
   summaryDiv.innerHTML += `
+    <hr/>
     <p>Subtotal: ${subtotal} ETB</p>
-    <p>Delivery: ${deliveryFee} ETB</p>
+    <p>Delivery Fee: ${deliveryFee} ETB</p>
     <h3>Total: ${subtotal + deliveryFee} ETB</h3>
   `;
 }
@@ -53,11 +52,11 @@ window.placeOrder = async function () {
   }
 
   if (cart.length === 0) {
-    alert("Cart is empty");
+    alert("Your cart is empty");
     return;
   }
 
-  let subtotal = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
+  const subtotal = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
 
   await addDoc(collection(db, "orders"), {
     customerId: currentUser.uid,

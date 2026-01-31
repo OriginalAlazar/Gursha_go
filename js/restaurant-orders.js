@@ -7,9 +7,7 @@ import {
   doc
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-import {
-  onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
 const ordersList = document.getElementById("ordersList");
 let restaurantId = null;
@@ -23,7 +21,11 @@ onAuthStateChanged(auth, (user) => {
   loadOrders("Pending");
 });
 
-window.loadOrders = async function (status) {
+window.loadOrders = async function (status, btn) {
+  // Highlight active tab
+  document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+  if (btn) btn.classList.add("active");
+
   ordersList.innerHTML = "Loading...";
 
   const q = query(
@@ -67,9 +69,7 @@ window.updateStatus = async function (orderId, currentStatus) {
   let newStatus = "Preparing";
   if (currentStatus === "Preparing") newStatus = "Delivered";
 
-  await updateDoc(doc(db, "orders", orderId), {
-    status: newStatus
-  });
+  await updateDoc(doc(db, "orders", orderId), { status: newStatus });
 
   loadOrders(currentStatus);
 };

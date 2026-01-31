@@ -4,12 +4,12 @@ import {
   query,
   where,
   getDocs,
+  updateDoc,
+  doc,
   serverTimestamp
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-import {
-  onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
 const menuContainer = document.getElementById("menuItems");
 
@@ -22,7 +22,7 @@ onAuthStateChanged(auth, (user) => {
 });
 
 async function loadMenu(restaurantId) {
-  menuContainer.innerHTML = "Loading...";
+  menuContainer.innerHTML = "Loading menu...";
 
   const q = query(
     collection(db, "menuItems"),
@@ -32,13 +32,29 @@ async function loadMenu(restaurantId) {
   const snapshot = await getDocs(q);
   menuContainer.innerHTML = "";
 
+  if (snapshot.empty) {
+    menuContainer.innerHTML = "<p>No menu items yet.</p>";
+    return;
+  }
+
   snapshot.forEach((docSnap) => {
     const item = docSnap.data();
-    menuContainer.innerHTML += `
-      <div class="menu-row">
-        ${item.name} – ${item.price} ETB (${item.category})
-      </div>
+    const div = document.createElement("div");
+    div.className = "menu-row";
+
+    div.innerHTML = `
+      <span>${item.name} – ${item.price} ETB (${item.category})</span>
+      <button>${item.available ? "Available" : "Unavailable"}</button>
     `;
+
+    const btn = div.querySelector("button");
+    btn.onclick = async () => {
+      const ref = doc(db, "menuItems", docSnap.id);
+      await updateDoc(ref, { available: !item.available });
+      loadMenu(restaurantId);
+    };
+
+    menuContainer.appendChild(div);
   });
 }
 
@@ -62,6 +78,5 @@ window.addItem = async function () {
 
   itemName.value = "";
   itemPrice.value = "";
-
   loadMenu(user.uid);
 };
