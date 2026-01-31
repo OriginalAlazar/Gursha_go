@@ -1,61 +1,140 @@
 :root {
-  --primary: #ff6b35;
-  --secondary: #1d3557;
-  --bg: #f4f6f8;
-  --card: #ffffff;
-  --text: #333;
-  --border: #ddd;
+    --primary: #ff6b35;
+    --secondary: #1d3557;
+    --bg: #f4f6f8;
+    --card: #ffffff;
+    --text: #333;
+    --border: #ddd;
 }
 
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 body {
-  background: var(--bg);
-  color: var(--text);
-  min-height: 100vh;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
 }
 
 button {
-  background: var(--primary);
-  color: #fff;
-  border: none;
-  padding: 13px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 15px;
-  font-weight: 600;
-  transition: all 0.2s ease;
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    padding: 13px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    transition: all 0.2s ease;
 }
 
 button:hover {
-  transform: translateY(-1px);
-  opacity: 0.95;
+    transform: translateY(-1px);
+    opacity: 0.95;
 }
 
 input {
-  width: 100%;
-  padding: 13px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  font-size: 15px;
+    width: 100%;
+    padding: 13px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 15px;
 }
 
 input:focus {
-  outline: none;
-  border-color: var(--primary);
+    outline: none;
+    border-color: var(--primary);
 }
 
 a {
-  color: var(--primary);
-  text-decoration: none;
-  font-weight: 500;
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
 }
 
 body.auth-page {
-  background: linear-gradient(135deg, #fff3e8, #ffe2d1);
+    background: linear-gradient(135deg, #fff3e8, #ffe2d1);
+}
+
+
+/* ================= FOOTER ================= */
+
+.footer {
+    background: #ff6b35;
+    /* Your primary orange color */
+    color: white;
+    padding: 2.5rem 1rem 1rem;
+}
+
+.footer-grid {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-grid>div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.footer-grid h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    color: white;
+}
+
+.footer-grid a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+}
+
+.footer-grid a:hover {
+    color: #1d3557;
+    /* Your secondary color for contrast */
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-bottom p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.9rem;
+}
+
+.social-icons {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-icons a {
+    color: white;
+    font-size: 1.1rem;
+    opacity: 0.9;
+    transition: all 0.2s;
+}
+
+.social-icons a:hover {
+    opacity: 1;
+    color: #1d3557;
+    /* Secondary color for contrast */
+    transform: scale(1.1);
 }

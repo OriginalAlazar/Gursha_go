@@ -1,67 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Home | GurshaGO</title>
 
-  <link rel="stylesheet" href="css/base.css" />
-  <link rel="stylesheet" href="css/home.css" />
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home | GurshaGO</title>
+
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/home.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 </head>
+
 <body>
 
-  <!-- ===== HEADER ===== -->
-  <header class="navbar">
-    <div class="nav-left">
-      <img src="images/logo.jpg" class="logo" alt="GurshaGO" />
-      <div>
-        <h3>GurshaGO</h3>
-        <span class="location">📍 Addis Ababa</span>
-      </div>
-    </div>
+    <!-- ===== HEADER ===== -->
+    <header class="navbar">
+        <div class="nav-left">
+            <img src="images/logo.jpg" class="logo" alt="GurshaGO" />
+            <div>
+                <h3>GurshaGO</h3>
+            </div>
+        </div>
 
-    <nav class="nav-right">
-      <a href="home.html" class="nav-link active">Home</a>
-      <a href="orders.html" class="nav-link">Orders</a>
-      <a href="cart.html" class="cart-btn">
+        <nav class="nav-right">
+            <a href="home.html" class="nav-link">Home</a>
+            <a href="orders.html" class="nav-link">Orders</a>
+            <a href="cart.html" class="cart-btn">
         🛒 <span id="cartCount">0</span>
       </a>
-    </nav>
-  </header>
+        </nav>
+    </header>
 
-  <!-- ===== SEARCH ===== -->
-  <section class="search-section">
-    <input
-      id="searchInput"
-      type="text"
-      placeholder="Search restaurants or dishes..."
-    />
-  </section>
+    <!-- ===== SEARCH ===== -->
+    <section class="search-section">
+        <input id="searchInput" type="text" placeholder="Search restaurants or dishes..." />
+    </section>
 
-  <!-- ===== CONTENT ===== -->
-  <main class="content">
-    <h2 class="section-title">Popular Restaurants</h2>
-    <div id="restaurantList" class="restaurant-grid"></div>
-  </main>
+    <!-- ===== CONTENT ===== -->
+    <main class="content">
+        <h2 class="section-title">Popular Restaurants</h2>
+        <div id="restaurantList" class="restaurant-grid"></div>
+    </main>
 
-  <!-- ===== FOOTER ===== -->
-  <footer class="footer">
-    <div class="footer-top">
-      <h4>GurshaGO</h4>
-      <p>Order food from your favorite local restaurants.</p>
-    </div>
+    <!-- ================= FOOTER ================= -->
+    <footer class="footer">
+        <div class="footer-grid">
 
-    <div class="footer-links">
-      <a href="home.html">Home</a>
-      <a href="orders.html">Orders</a>
-      <a href="cart.html">Cart</a>
-      <a href="login.html">Logout</a>
-    </div>
+            <div>
+                <h4>Customers</h4>
+                <a href="restaurant-dashboard.html">Browse Restaurants</a>
+                <a href="#">Deals & Offers</a>
+                <a href="#">FAQ</a>
+                <a href="#">Contact Support</a>
+            </div>
 
-    <p class="footer-copy">© 2026 GurshaGO • Delivering Ethiopian flavors 🇪🇹</p>
-  </footer>
+            <div>
+                <h4>Restaurants</h4>
+                <a href="#">Partner With Us</a>
+                <a href="#">Restaurant Login</a>
+                <a href="#">Benefits</a>
+            </div>
 
-  <script src="js/firebase.js" type="module"></script>
-  <script src="js/home.js" type="module"></script>
+            <div>
+                <h4>Company</h4>
+                <a href="#">About GurshaGo</a>
+                <a href="#">Careers</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 GurshaGo. All rights reserved.</p>
+
+            <div class="social-icons">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/firebase.js" type="module"></script>
+    <script src="js/home.js" type="module"></script>
 </body>
+
 </html>

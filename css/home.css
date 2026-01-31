@@ -1,303 +1,292 @@
 /* =====================
    NAVBAR
 ===================== */
+
 .navbar {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: #fff;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 14px 22px;
-  border-bottom: 1px solid #eee;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 22px;
+    border-bottom: 1px solid #eee;
 }
 
 .nav-left {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
 .logo {
-  width: 44px;
-  height: 44px;
-  border-radius: 10px;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
 }
 
 .location {
-  font-size: 13px;
-  color: #777;
+    font-size: 13px;
+    color: #777;
 }
 
 .nav-right {
-  display: flex;
-  align-items: center;
-  gap: 18px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
 }
 
 .nav-link {
-  text-decoration: none;
-  color: #444;
-  font-size: 14px;
+    text-decoration: none;
+    color: white;
+    border-radius: 20px;
+    /* More reasonable pill shape */
+    background-color: #ff875f;
+    font-size: 14px;
+    padding: 8px 16px;
+    /* Add padding for proper pill shape */
+    display: inline-block;
+    /* Ensures proper sizing */
 }
 
 .cart-btn {
-  position: relative;
-  font-size: 20px;
-  text-decoration: none;
-  color: var(--secondary);
+    position: relative;
+    font-size: 20px;
+    text-decoration: none;
+    color: var(--secondary);
 }
 
 .cart-btn span {
-  position: absolute;
-  top: -6px;
-  right: -10px;
-  background: var(--primary);
-  color: #fff;
-  font-size: 11px;
-  padding: 2px 6px;
-  border-radius: 10px;
+    position: absolute;
+    top: -6px;
+    right: -10px;
+    background: var(--primary);
+    color: #fff;
+    font-size: 11px;
+    padding: 2px 6px;
+    border-radius: 10px;
 }
+
 
 /* =====================
    SEARCH
 ===================== */
+
 .search-section {
-  padding: 18px 22px;
-  background: #fff;
+    padding: 18px 22px;
+    background: #fff;
 }
 
 .search-section input {
-  width: 100%;
-  padding: 14px 16px;
-  border-radius: 14px;
-  border: 1px solid #ddd;
-  font-size: 15px;
-  background: #fafafa;
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 14px;
+    border: 1px solid #ddd;
+    font-size: 15px;
+    background: #fafafa;
 }
+
 
 /* =====================
    CONTENT
 ===================== */
+
 .content {
-  padding: 0 22px 40px;
+    padding: 0 22px 40px;
 }
 
 .section-title {
-  margin: 26px 0 16px;
-  font-size: 20px;
+    margin: 26px 0 16px;
+    font-size: 20px;
 }
+
 
 /* =====================
    GRID
 ===================== */
+
 .restaurant-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 22px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 22px;
 }
+
 
 /* =====================
    CARD
 ===================== */
+
 .restaurant-card {
-  background: #fff;
-  border-radius: 18px;
-  overflow: hidden;
-  box-shadow: 0 12px 28px rgba(0,0,0,0.08);
-  transition: 0.2s ease;
+    background: #fff;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+    transition: 0.2s ease;
 }
 
 .restaurant-card:hover {
-  transform: translateY(-6px);
+    transform: translateY(-6px);
 }
 
 .restaurant-img {
-  height: 150px;
-  background-size: cover;
-  background-position: center;
-  position: relative;
+    height: 150px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
 }
 
 .open-badge {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  background: #2ecc71;
-  color: #fff;
-  font-size: 12px;
-  padding: 5px 10px;
-  border-radius: 12px;
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: #2ecc71;
+    color: #fff;
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 12px;
 }
 
 .restaurant-info {
-  padding: 14px;
+    padding: 14px;
 }
 
 .restaurant-info h4 {
-  font-size: 17px;
-  margin-bottom: 4px;
+    font-size: 17px;
+    margin-bottom: 4px;
 }
 
 .restaurant-info p {
-  font-size: 13px;
-  color: #666;
+    font-size: 13px;
+    color: #666;
 }
 
 .meta {
-  display: flex;
-  justify-content: space-between;
-  font-size: 13px;
-  margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    margin-top: 8px;
 }
 
 .restaurant-info button {
-  margin-top: 12px;
-  width: 100%;
-  padding: 12px;
-  border-radius: 14px;
+    margin-top: 12px;
+    width: 100%;
+    padding: 12px;
+    border-radius: 14px;
 }
 
-/* =====================
-   FOOTER
-===================== */
-.footer {
-  background: #fff;
-  border-top: 1px solid #eee;
-  padding: 20px;
-  text-align: center;
-  font-size: 13px;
-  color: #777;
-}
-
-.footer-links {
-  margin-top: 8px;
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-}
-
-.footer-links a {
-  text-decoration: none;
-  color: #555;
-}
 
 /* =====================
    LOADING
 ===================== */
+
 .loading {
-  grid-column: 1 / -1;
-  text-align: center;
-  color: #777;
+    grid-column: 1 / -1;
+    text-align: center;
+    color: #777;
 }
+
+
 /* =====================
    HEADER UPGRADE
 ===================== */
+
 .navbar {
-  backdrop-filter: blur(10px);
-  background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.95);
 }
 
 .nav-link.active {
-  color: var(--primary);
-  font-weight: 600;
+    color: var(--primary);
+    font-weight: 600;
 }
+
 
 /* =====================
    SEARCH UX
 ===================== */
+
 .search-section {
-  position: sticky;
-  top: 72px;
-  z-index: 90;
-  border-bottom: 1px solid #eee;
+    position: sticky;
+    top: 72px;
+    z-index: 90;
+    border-bottom: 1px solid #eee;
 }
 
 .search-section input {
-  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
 }
+
 
 /* =====================
    SECTION TITLE
 ===================== */
+
 .section-title {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .section-title::before {
-  content: "🔥";
+    content: "🔥";
 }
+
 
 /* =====================
    CARD UX ENHANCEMENTS
 ===================== */
+
 .restaurant-card {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .restaurant-info button {
-  background: linear-gradient(135deg, var(--primary), #ff875f);
-  color: #fff;
-  font-weight: 600;
-  border: none;
-  transition: 0.2s ease;
+    background: linear-gradient(135deg, var(--primary), #ff875f);
+    color: #fff;
+    font-weight: 600;
+    border: none;
+    transition: 0.2s ease;
 }
 
 .restaurant-info button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 18px rgba(255,107,60,0.35);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(255, 107, 60, 0.35);
 }
+
 
 /* =====================
    BADGES & META
 ===================== */
+
 .meta span {
-  background: #f5f5f5;
-  padding: 4px 8px;
-  border-radius: 10px;
+    background: #f5f5f5;
+    padding: 4px 8px;
+    border-radius: 10px;
 }
 
-/* =====================
-   FOOTER UPGRADE
-===================== */
-.footer {
-  margin-top: 40px;
-  padding: 30px 20px;
+
+/* Responsive */
+
+@media (max-width: 768px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        text-align: center;
+    }
+    .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
 }
 
-.footer-top h4 {
-  margin: 0;
-  font-size: 18px;
-  color: #333;
-}
-
-.footer-top p {
-  margin: 6px 0 14px;
-  font-size: 14px;
-  color: #666;
-}
-
-.footer-links {
-  flex-wrap: wrap;
-}
-
-.footer-links a {
-  font-weight: 600;
-}
-
-.footer-copy {
-  margin-top: 16px;
-  font-size: 12px;
-  color: #999;
-}
 
 /* =====================
    EMPTY / LOADING STATE
 ===================== */
+
 .loading {
-  font-size: 15px;
-  padding: 40px 0;
+    font-size: 15px;
+    padding: 40px 0;
 }
