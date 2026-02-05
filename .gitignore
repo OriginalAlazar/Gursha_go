@@ -1,0 +1,28 @@
+# Firebase/API Keys
+firebase.js
+firebase-config.js
+firebaseConfig.js
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+.env.*.local
+
+# Environment variables
+*.env
+*.env.*
+
+# API keys, secrets
+secrets/
+keys/
+config/keys.json
+credentials/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+
+# Dependencies
+node_modules/
